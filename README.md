@@ -45,3 +45,13 @@ Windows提权辅助模块使用了：[gh0stkey / 的peAssist](https://github.com
 ![image-20210702175250021](img/image-20210702175250021.png)
 
 ![image-20210702175302776](img/image-20210702175302776.png)
+
+## docker版本
+
+docker版本的我也上传了
+
+```bash
+docker pull c1o2a3/bug
+docker run -d -p 80:80 c1o2a3/bug
+```
+
