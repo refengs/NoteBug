@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>渗透平台 - C1O2A3</title>
+  <link rel="stylesheet" href="./src/css/layui.css">
+<style type="text/css">
+.layui-layout-admin .layui-body {
+    position: fixed;
+    top: 60px;
+    bottom: 44px;
+}
+.myselect {
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.myinput{
+  width: 90%;
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.mymd5{
+  margin-top: 15px;
+  /*padding-top: 66px;*/
+}
+.myinput:hover {
+    border-bottom-color:  #c51152;
+    -webkit-box-shadow: 0 3px 0 0 #c51152;
+    box-shadow: 0 3px 0 0 #c51152;
+}
+.myinput:focus {
+    border-bottom-color:  #33ccff;
+    -webkit-box-shadow: 0 3px 0 0 #33ccff;
+    box-shadow: 0 3px 0 0 #33ccff;
+}
+.container{
+  margin:2% 10%;
+  /*width: 400px;*/
+  height: 600px;
+  padding: 10px 25px;
+  /*background: #0a0e31;*/
+  font-family: "Montserrat";
+}
+.label_text {
+    float: left;
+    display: block;
+    padding: 9px 15px;
+    /* width: 80px; */
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+}
+</style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header layui-bg-blue">
+    <div class="layui-logo">渗透平台</div>
+
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+ <!--      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li> -->
+<!--       <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li> -->
+    </ul>
+    <ul class="layui-nav layui-layout-right layui-bg-blue">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="./src/img/test.jpg" class="layui-nav-img">
+          c1o2a3
+        </a>
+        <!-- <dl class="layui-nav-child"> -->
+<!--           <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd> -->
+        <!-- </dl> -->
+      </li>
+      <!-- <li class="layui-nav-item"><a href="">退了</a></li> -->
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-blue">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree layui-bg-blue"  lay-filter="test">
+        <li class="layui-nav-item  layui-nav-itemed">
+          <a class="" href="javascript:;">前端工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./decode.html">编码解码</a></dd>
+            <dd><a href="./qrcode.html">二维码生成</a></dd>
+            <!-- <dd><a href="./codebeautify.html">代码美化</a></dd> -->
+            <dd class="layui-this"><a href="./passwd.html">随机密码生成器</a></dd>
+            <dd><a href="./idcard.html">身份证号码生成</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">安全工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./googlehacking.html">google hacking</a></dd>
+            <dd><a href="./search.html">综合搜索</a></dd>
+            <dd><a href="./getAV.html">Windows杀软识别</a></dd>
+            <dd><a href="./tiquan.html">Windows提权辅助</a></dd>
+            <dd><a href="./shell.html">反弹shell编码</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">常用资料</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./linux.html">Linux常用命令</a></dd>
+            <dd><a href="./windows.html">windows常用命令</a></dd>
+            <dd><a href="./powershell.html">powershell常用命令</a></dd>
+            <dd><a href="./down.html">传输方法常用命令</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+<!--         <li class="layui-nav-item"><a href="">云市场</a></li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li> -->
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body ">
+    <!-- 内容主体区域 -->
+      <div class="layui-collapse" lay-accordion="" style="padding: 15px;">
+        <center>  <h1>随机密码生成器</h1></center>
+        <hr class="layui-border-blue">
+        <form class="layui-form" action="">
+          <div class="layui-form-item container">
+
+            <div class="layui-form">
+              <table class="layui-table" style="width:80%">
+                <colgroup>
+                  <col width="80">
+                  <col width="150">
+                  <col>
+                </colgroup>
+                <thead>
+                  <tr>
+                  </tr> 
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="width:25%;height:50px">所用字符</td>
+                    <td>
+
+                      <div class="layui-form-item layui-form" style="margin-top: 15px;padding: 10px;">
+                        <!-- <label class="layui-form-label">搜索引擎</label> -->
+                        <div class="layui-input-block" style="margin-left: 40px;">
+                          <input type="checkbox" name="daxie" title="大写" checked="" lay-filter="search">
+                          <input type="checkbox" name="xiaoxie" title="小写" checked="" lay-filter="search">
+                          <input type="checkbox" name="shuzi" title="数字" checked="" lay-filter="search">
+                          <input type="checkbox" name="zifu" title="字符" lay-filter="search">
+                        </div>
+                        <div class="layui-input-inline" id="select_pass" style="margin-left: 40px;margin-top: 20px;width: 355px; height: 40px"></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="width:25%;height:50px">密码长度</td>
+                    <td><div id="slideTest2" class="demo-slider"  style="width:90%; margin:0 auto"></div></td>
+                  </tr>
+                  <tr>
+                    <td style="width:25%;height:100px">生成结果</td>
+                    <td><div class=" result_pass" id="result_pass"></div></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="layui-btn-container" style="margin: 30px 35% ">
+                <button type="button" class="layui-btn layui-btn-normal LAY-component-form-getval" onclick="shengcheng()">生成密码</button>
+                <button type="button" class="layui-btn layui-btn-primary" onclick="remove_result()">清除结果</button>
+              </div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © C1O2A3
+  </div>
+</div>
+<script src="./src/layui.js"></script>
+<script>
+daxie = true;
+xiaoxie = true;
+shuzi = true;
+zifu = false;
+size=4;
+//JavaScript代码区域
+layui.use(['form','element','layer','slider'], function(){
+  $ = layui.jquery;
+  element = layui.element;
+  layer = layui.layer;
+  form = layui.form;
+  slider = layui.slider;
+
+});
+  //定义初始值
+  slider.render({
+    elem: '#slideTest2'
+    ,value: 4 //初始值
+    ,min: 4
+    ,max: 99
+    ,input: true
+    ,change: function(value){
+    console.log(value) //动态获取滑块数值
+    size = value;}
+  });
+</script>
+<script>
+
+layui.form.on('checkbox(search)', function (data) {
+    var check_switch = data.elem.checked;
+    var name = data.elem.name;
+    // alert(check_switch);
+    if (check_switch ==true) {
+      layer.msg(name+":开启");
+      if (name=="zifu") {
+        $("#select_pass").append('<input type="text" name="teshuzifu" autocomplete="off" class="layui-input teshuzifu" id="teshuzifu" value="!@#$%^&*">');
+        zifu = true;
+      }
+      if (name=="xiaoxie") {
+        xiaoxie = true;
+      }
+      if (name=="shuzi") {
+        shuzi = true;
+      }
+      if (name=="daxie") {
+        daxie = true;
+      }
+    }else{
+      layer.msg(name+":关闭");
+      if (name=="zifu") {
+        $(".teshuzifu").remove();
+        zifu = false;
+      }
+      if (name=="xiaoxie") {
+        xiaoxie = false;
+      }
+      if (name=="shuzi") {
+        shuzi = false;
+      }
+      if (name=="daxie") {
+        daxie = false;
+      }
+    }
+});
+
+function shengcheng() {
+  if (daxie == false && xiaoxie == false && shuzi == false && zifu == false ) {
+    layer.msg("给爷滚！");
+    exit();
+  }
+  // alert(size);
+  var Upper = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+  var Lower = new Array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+  var Number_0_9 = new Array('0','1','2','3','4','5','6','7','8','9')
+  var passwd = new Array();
+  if (daxie == true) {
+    passwd = passwd.concat(Upper);
+  }
+  if (xiaoxie == true) {
+    passwd = passwd.concat(Lower);
+  }
+  if (shuzi == true) {
+    passwd = passwd.concat(Number_0_9);
+  }
+  if (zifu == true) {
+    const symbols = $("#teshuzifu").val();
+    arr_symbols=new Array();
+    for (i=0;i<symbols.length;i++) {
+      arr_symbols.push(symbols[i])
+    }
+    passwd = passwd.concat(arr_symbols);
+    // console.log(arr_symbols);
+  }
+  passwdlength = passwd.length;
+  var createPassword = '';
+  for (i=0;i<size;i++) {
+      j = Math.floor(Math.random()*passwdlength);
+      createPassword += passwd[j];
+    }
+  $(".password_result").remove();
+  $("#result_pass").append('<input type="text"  name="password" autocomplete="off" class="layui-input password_result" id="password_result" value="'+createPassword+'">');
+}
+function remove_result() {
+  $(".password_result").remove();
+}
+</script>
+
+</body>
+</html>
+      

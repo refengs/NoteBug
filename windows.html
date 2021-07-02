@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>渗透平台 - C1O2A3</title>
+  <link rel="stylesheet" href="./src/css/layui.css">
+<style type="text/css">
+.layui-layout-admin .layui-body {
+    position: fixed;
+    top: 60px;
+    bottom: 44px;
+}
+.myselect {
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.myinput{
+  width: 90%;
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.mymd5{
+  margin-top: 15px;
+  /*padding-top: 66px;*/
+}
+.myinput:hover {
+    border-bottom-color:  #c51152;
+    -webkit-box-shadow: 0 3px 0 0 #c51152;
+    box-shadow: 0 3px 0 0 #c51152;
+}
+.myinput:focus {
+    border-bottom-color:  #33ccff;
+    -webkit-box-shadow: 0 3px 0 0 #33ccff;
+    box-shadow: 0 3px 0 0 #33ccff;
+}
+</style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header layui-bg-blue">
+    <div class="layui-logo">渗透平台</div>
+
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+ <!--      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li> -->
+<!--       <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li> -->
+    </ul>
+    <ul class="layui-nav layui-layout-right layui-bg-blue">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="./src/img/test.jpg" class="layui-nav-img">
+          c1o2a3
+        </a>
+        <!-- <dl class="layui-nav-child"> -->
+<!--           <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd> -->
+        <!-- </dl> -->
+      </li>
+      <!-- <li class="layui-nav-item"><a href="">退了</a></li> -->
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-blue">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree layui-bg-blue"  lay-filter="test">
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">前端工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./decode.html">编码解码</a></dd>
+            <dd><a href="./qrcode.html">二维码生成</a></dd>
+            <!-- <dd><a href="./codebeautify.html">代码美化</a></dd> -->
+            <dd><a href="./passwd.html">随机密码生成器</a></dd>
+            <dd><a href="./idcard.html">身份证号码生成</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">安全工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./googlehacking.html">google hacking</a></dd>
+            <dd><a href="./search.html">综合搜索</a></dd>
+            <dd><a href="./getAV.html">Windows杀软识别</a></dd>
+            <dd><a href="./tiquan.html">Windows提权辅助</a></dd>
+            <dd><a href="./shell.html">反弹shell编码</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">常用资料</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./linux.html">Linux常用命令</a></dd>
+            <dd class="layui-this"><a href="./windows.html">windows常用命令</a></dd>
+            <dd><a href="./powershell.html">powershell常用命令</a></dd>
+            <dd><a href="./down.html">传输方法常用命令</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+<!--         <li class="layui-nav-item"><a href="">云市场</a></li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li> -->
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body ">
+    <!-- 内容主体区域 -->
+    <div class="layui-collapse" lay-accordion="" style="padding: 15px; ">
+      <center>  <h1>windows常用命令</h1></center>
+      <hr class="layui-border-blue">
+      <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+        <legend>一些有用的命令</legend>
+      </fieldset>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">文件操作</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b># 将ipconfig的执行结果输出到C:/1.txt</b></li>
+              <li>ipconfig >> C:/1.txt</li>
+              <li><b># 查看文件</b></li>
+              <li>type C:/1.txt</li>
+              <li><b># 全盘搜索文件(盘符自己把握)</b></li>
+              <li>dir c:\ d:\ e:\ /s /b | find "简历.pdf"</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">系统用户相关</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b># 查询当前服务器所有的账户</b></li>
+              <li>net user</li>
+              <li><b># 查看计算机用户组列表</b></li>
+              <li>net localgroup</li>
+              <li><b># 查询指定用户的具体信息</b></li>
+              <li>net user username</li>
+              <li><b># 创建一个新的账户</b></li>
+              <li>net user username password /add</li>
+              <li><b># administrators(想要提升到的用户组) cs(想要提升到指定用户组的账户)</b></li>
+              <li>net localgroup administrators cs /add</li>
+              <li><b># 删除指定用户</b></li>
+              <li>net user user /del</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">信息查看相关</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b># 查看系统版本信息</b></li>
+              <li>systeminfo</li>
+              <li><b># 查看系统开放端口</b></li>
+              <li>netstat -ano</li>
+              <li><b># 查看80端口</b></li>
+              <li>netstat -aon|findstr "80" </li>
+              <li><b># 查看2448进程</b></li>
+              <li>tasklist |findstr "2448"</li>
+              <li><b># 查看系统进程</b></li>
+              <li>tasklist /svc</li>
+              <li>ipconfig /all</li>
+              <li>whoami</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">进程端口相关</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b># 列出当前计算机运行的程序</b></li>
+              <li>tasklist</li>
+              <li>taskkill /svc</li>
+              <li><b># 结束指定程序</b></li>
+              <li>taskkill /f /im xx.exe</li>
+              <li><b># 结束pid为111的端口</b></li>
+              <li>taskkill /f /pid 111</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">查看历史打开文件</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>dir %APPDATA%\Microsoft\Windows\Recent</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">其他命令</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b>查看版本</b></li>
+              <li>ver</li>
+              <li><b>查看主机名</b></li>
+              <li>hostname</li>
+              <li><b>清屏</b></li>
+              <li>cls</li>
+              <li><b>查看服务</b></li>
+              <li>net start</li>
+              <li><b>关闭防火墙</b></li>
+              <li>net stop sharedaccess</li>
+              <li><b>查看当前机器的环境变量</b></li>
+              <li>set</li>
+              <li><b>列出当前机器上的所有盘符</b></li>
+              <li>fsutil fsinfo drives</li>
+              <li><b>搜集注册表中的各种密码数据</b></li>
+              <li>reg query HKLM /f password /t REG_SZ /s</li>
+            </ul>
+          </div>
+        </div>
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">查看历史打开文件</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>dir %APPDATA%\Microsoft\Windows\Recent</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © C1O2A3
+  </div>
+</div>
+<script src="./src/layui.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['form','element','layer'], function(){
+  var $ = layui.jquery;
+  element = layui.element;
+  layer = layui.layer;
+  form = layui.form;
+  
+});
+</script>
+</body>
+</html>
+      

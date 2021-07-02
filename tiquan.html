@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>渗透平台 - C1O2A3</title>
+  <link rel="stylesheet" href="./src/css/layui.css">
+<style type="text/css">
+.layui-layout-admin .layui-body {
+    position: fixed;
+    top: 60px;
+    bottom: 44px;
+}
+.myselect {
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  font-size: 15px;
+}
+.myinput{
+  width: 100%;
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  font-size: 15px;
+}
+.mymd5{
+  margin-top: 15px;
+  /*padding-top: 66px;*/
+}
+.myinput:hover {
+    border-bottom-color:  #c51152;
+    -webkit-box-shadow: 0 3px 0 0 #c51152;
+    box-shadow: 0 3px 0 0 #c51152;
+}
+.myinput:focus {
+    border-bottom-color:  #33ccff;
+    -webkit-box-shadow: 0 3px 0 0 #33ccff;
+    box-shadow: 0 3px 0 0 #33ccff;
+}
+</style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header layui-bg-blue">
+    <div class="layui-logo">渗透平台</div>
+
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+ <!--      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li> -->
+<!--       <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li> -->
+    </ul>
+    <ul class="layui-nav layui-layout-right layui-bg-blue">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="./src/img/test.jpg" class="layui-nav-img">
+          c1o2a3
+        </a>
+        <!-- <dl class="layui-nav-child"> -->
+<!--           <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd> -->
+        <!-- </dl> -->
+      </li>
+      <!-- <li class="layui-nav-item"><a href="">退了</a></li> -->
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-blue">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree layui-bg-blue"  lay-filter="test">
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">前端工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./decode.html">编码解码</a></dd>
+            <dd><a href="./qrcode.html">二维码生成</a></dd>
+            <!-- <dd><a href="./codebeautify.html">代码美化</a></dd> -->
+            <dd><a href="./passwd.html">随机密码生成器</a></dd>
+            <dd><a href="./idcard.html">身份证号码生成</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">安全工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./googlehacking.html">google hacking</a></dd>
+            <dd><a href="./search.html">综合搜索</a></dd>
+            <dd><a href="./getAV.html">Windows杀软识别</a></dd>
+            <dd class="layui-this"><a href="./tiquan.html">Windows提权辅助</a></dd>
+            <dd><a href="./shell.html">反弹shell编码</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">常用资料</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./linux.html">Linux常用命令</a></dd>
+            <dd><a href="./windows.html">windows常用命令</a></dd>
+            <dd><a href="./powershell.html">powershell常用命令</a></dd>
+            <dd><a href="./down.html">传输方法常用命令</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+<!--         <li class="layui-nav-item"><a href="">云市场</a></li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li> -->
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body ">
+    <!-- 内容主体区域 -->
+    <div class="layui-collapse" lay-accordion="" style="padding: 15px; ">
+      <center>  <h1>Windows提权辅助</h1></center>
+      <hr class="layui-border-red">
+      <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+        <legend>Windows提权辅助</legend>
+      </fieldset>
+      <textarea  id="text" style=" height: 200px;"  autocomplete="off" class="layui-input myinput" placeholder="输入systeminfo 中修补程序的文字(请不要有多余的换行)..."></textarea>
+      <div class="layui-btn-container" style="margin-top: 30px; text-align: center;">
+        <button type="button" class="layui-btn layui-btn-normal" onclick=" tiquan()">查询</button>
+        <button type="button" class="layui-btn layui-btn-warm" style="margin-left: 20px;" onclick="remove_result()">清空</button>
+      </div> 
+      <div id="result">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+          <legend>识别结果</legend>
+        </fieldset>  
+        <table class="layui-table" id="tiquanrelust">
+        </table>   
+      </div>
+    </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © C1O2A3
+  </div>
+</div>
+<script src="./src/layui.js"></script>
+<script src="./src/mskblist.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['form','element','layer'], function(){
+  $ = layui.jquery;
+  element = layui.element;
+  layer = layui.layer;
+  form = layui.form;
+  
+});
+function remove_result() {
+  $("#avrelust").empty();
+  document.getElementById("text").value = "";
+}
+function tiquan() {
+    var tasklist = document.getElementById('text').value.toLowerCase();
+    var result = document.getElementById('tiquanrelust');
+    if (tasklist=="") {
+      layer.msg('请输入内容');
+      exit();
+    }
+    var htmlContent = "";
+    for (i = 0; i < Object.keys(fixedList).length; i++) {
+        var fixedId = fixedList[i][1];
+        if (fixedId.indexOf(',') != -1 ) {
+          arr = fixedId.split(",");
+          var cve = 0;
+          for(j = 0,len=arr.length; j < len; j++) {
+              fix = arr[j];
+              // console.log(fix);
+              if (tasklist.indexOf("kb") != -1 && tasklist.indexOf(fix.toLowerCase()) !== -1) {
+                var cve = fixedList[i][0];
+                // console.log(fixedList[i][0]);
+              }
+          }
+          console.log(cve);
+              if (cve == 0) {
+                htmlContent += "<tr><td>" + fixedList[i][0] + "</td><td>" + fixedId + "</td><td>" + fixedList[i][2] + "</td><td>" + fixedList[i][3] + "</td></tr>";
+              }
+        }
+        else if (tasklist.indexOf("kb") != -1 && tasklist.indexOf(fixedId.toLowerCase()) == -1) {
+          // console.log(tasklist.indexOf("kb"));
+            htmlContent += "<tr><td>" + fixedList[i][0] + "</td><td>" + fixedId + "</td><td>" + fixedList[i][2] + "</td><td>" + fixedList[i][3] + "</td></tr>";
+        }
+
+
+    }
+    if (htmlContent === "") {
+        result.innerHTML = "<div class=\"mdui-table-fluid\"><table class=\"mdui-table mdui-table-hoverable\"><thead><tr><th>微软漏洞编号</th><th>补丁编号</th><th>描述</th><th>影响系统</th></tr></thead><tbody><thead><tr><td>暂无匹配</td><td></td><td></td><td></td></tr></tbody></table></div><br><br>";
+    } else {
+        result.innerHTML = "<div class=\"mdui-table-fluid\"><table class=\"mdui-table mdui-table-hoverable\"><thead><tr><th>微软漏洞编号</th><th>补丁编号</th><th>描述</th><th>影响系统</th></tr></thead><tbody>" + htmlContent + "</tbody></table></div><br><br>";
+    }
+}
+</script>
+</body>
+</html>
+      

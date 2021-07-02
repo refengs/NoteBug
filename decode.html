@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>渗透平台 - C1O2A3</title>
+  <link rel="stylesheet" href="./src/css/layui.css">
+<style type="text/css">
+.layui-layout-admin .layui-body {
+    position: fixed;
+    top: 60px;
+    bottom: 44px;
+}
+.myselect {
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.myinput{
+  width: 90%;
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.mymd5{
+  margin-top: 15px;
+  /*padding-top: 66px;*/
+}
+.myinput:hover {
+    border-bottom-color:  #c51152;
+    -webkit-box-shadow: 0 3px 0 0 #c51152;
+    box-shadow: 0 3px 0 0 #c51152;
+}
+.myinput:focus {
+    border-bottom-color:  #33ccff;
+    -webkit-box-shadow: 0 3px 0 0 #33ccff;
+    box-shadow: 0 3px 0 0 #33ccff;
+}
+</style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header layui-bg-blue">
+    <div class="layui-logo">渗透平台</div>
+
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+ <!--      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li> -->
+<!--       <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li> -->
+    </ul>
+    <ul class="layui-nav layui-layout-right layui-bg-blue">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="./src/img/test.jpg" class="layui-nav-img">
+          c1o2a3
+        </a>
+        <!-- <dl class="layui-nav-child"> -->
+<!--           <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd> -->
+        <!-- </dl> -->
+      </li>
+      <!-- <li class="layui-nav-item"><a href="">退了</a></li> -->
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-blue">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree layui-bg-blue"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">前端工具</a>
+          <dl class="layui-nav-child">
+            <dd class="layui-this"><a href="./decode.html">编码解码</a></dd>
+            <dd><a href="./qrcode.html">二维码生成</a></dd>
+            <!-- <dd><a href="./codebeautify.html">代码美化</a></dd> -->
+            <dd><a href="./passwd.html">随机密码生成器</a></dd>
+            <dd><a href="./idcard.html">身份证号码生成</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">安全工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./googlehacking.html">google hacking</a></dd>
+            <dd><a href="./search.html">综合搜索</a></dd>
+            <dd><a href="./getAV.html">Windows杀软识别</a></dd>
+            <dd><a href="./tiquan.html">Windows提权辅助</a></dd>
+            <dd><a href="./shell.html">反弹shell编码</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">常用资料</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./linux.html">Linux常用命令</a></dd>
+            <dd><a href="./windows.html">windows常用命令</a></dd>
+            <dd><a href="./powershell.html">powershell常用命令</a></dd>
+            <dd><a href="./down.html">传输方法常用命令</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+<!--         <li class="layui-nav-item"><a href="">云市场</a></li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li> -->
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body ">
+    <!-- 内容主体区域 -->
+    <div class="layui-collapse" lay-accordion="" style="padding: 15px; ">
+      <center>  <h1>编码转换</h1></center>
+      <hr class="layui-border-blue">
+      <div class="layui-tab layui-tab-card"  style="border:0; border-radius:10px;">
+        <ul class="layui-tab-title">
+          <li class="layui-this">URL编码</li>
+          <li>Unicode编码</li>
+          <li>BASE64编码</li>
+          <li>HEX编码</li>
+          <li>HTML16实体化编码</li>
+          <li>HTML10实体化编码</li>
+          <li>JS8编码</li>
+          <li>JS16编码</li>
+          <li>StringCharCode</li>
+          <li>MD5</li>
+        </ul>
+        <div class="layui-tab-content">
+          <div class="layui-tab-item layui-show">
+<!-- URL编码选项开始 -->
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block">
+                <textarea id="URL_handle" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="请输入..."></textarea>
+              </div>
+            </div>
+            <div class="layui-btn-container" style="text-align: center;">
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-normal" onclick="urlencode();">URL编码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-normal" onclick="urlAllEncode();">URL全编码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-warm" onclick="urldecode();">URL解码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-danger" onclick="remove_text();">清空输入</button>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="URL_result" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="结果将在这显示..."></textarea>
+              </div>
+            </div>
+<!-- URL编码选项结束 -->
+          </div>
+          <div class="layui-tab-item">
+<!-- unicode编码选项开始 -->
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="Unicode_handle" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="请输入..."></textarea>
+              </div>
+            </div>
+            <div class="layui-btn-container" style="text-align: center;">
+              <button type="button" class="layui-btn  layui-btn-radius  layui-btn-normal" onclick="DoEncodeUnicode();">Unicode编码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-warm" onclick="DoDecodeUnicode();">Unicode解码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-danger" onclick="remove_text();">清空输入</button>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="Unicode_result" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="结果将在这显示..."></textarea>
+              </div>
+            </div>
+<!-- unicode编码选项结束 -->
+          </div>
+          <div class="layui-tab-item">
+<!-- BASE64编码选项开始 -->
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="base64_handle" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="请输入..."></textarea>
+              </div>
+            </div>
+            <div class="layui-btn-container" style="text-align: center;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-normal" onclick="base64_encade();">base64编码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-normal" onclick="URL_base64_encade();">URLSafe_base64编码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-warm" onclick="base64_decade();">base64解码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-danger" onclick="remove_text();">清空输入</button>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="base64_result" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="结果将在这显示..."></textarea>
+              </div>
+            </div>
+<!-- BASE64编码选项结束 -->
+          </div>
+          <div class="layui-tab-item">
+<!-- HEX编码选项开始 -->
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="HEX_handle" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="请输入..."></textarea>
+              </div>
+            </div>
+            <div class="layui-btn-container" style="text-align: center;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-normal" onclick="HEX_encade();">HEX编码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-warm" onclick="HEX_decade();">HEX解码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-danger" onclick="remove_text();">清空输入</button>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="HEX_result" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="结果将在这显示..."></textarea>
+              </div>
+            </div>
+<!-- HEX编码选项结束 -->
+          </div>
+          <div class="layui-tab-item">
+<!-- HTML16实体化编码选项开始 -->
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="html16_handle" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="请输入..."></textarea>
+              </div>
+            </div>
+            <div class="layui-btn-container" style="text-align: center;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-normal" onclick="html16_encade();">html16编码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-warm" onclick="html16_decade();">html16解码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-danger" onclick="remove_text();">清空输入</button>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="html16_result" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="结果将在这显示..."></textarea>
+              </div>
+            </div>
+<!-- HTML16实体化编码选项结束 -->
+          </div>
+          <div class="layui-tab-item">
+<!-- HTML10实体化编码选项开始 -->
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="html10_handle" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="请输入..."></textarea>
+              </div>
+            </div>
+            <div class="layui-btn-container" style="text-align: center;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-normal" onclick="html10_encade();">html10 编码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-warm" onclick="html10_decade();">html10 解码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-danger" onclick="remove_text();">清空输入</button>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="html10_result" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="结果将在这显示..."></textarea>
+              </div>
+            </div>
+<!-- HTML10实体化编码选项结束 -->
+          </div>
+          <div class="layui-tab-item">
+<!-- JS8编码选项开始 -->
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="js8_handle" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="请输入..."></textarea>
+              </div>
+            </div>
+            <div class="layui-btn-container" style="text-align: center;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-normal" onclick="js8_encade();">js8 编码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-warm" onclick="js8_decade();">js8 解码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-danger" onclick="remove_text();">清空输入</button>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="js8_result" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="结果将在这显示..."></textarea>
+              </div>
+            </div>
+<!-- JS8编码编码选项结束 -->
+          </div>
+          <div class="layui-tab-item">
+<!-- JS16编码选项开始 -->
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="js16_handle" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="请输入..."></textarea>
+              </div>
+            </div>
+            <div class="layui-btn-container" style="text-align: center;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-normal" onclick="js16_encade();">js16 编码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-warm" onclick="js16_decade();">js16 解码</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-danger" onclick="remove_text();">清空输入</button>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="js16_result" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="结果将在这显示..."></textarea>
+              </div>
+            </div>
+<!-- JS16编码选项结束 -->
+          </div>
+          <div class="layui-tab-item">
+<!-- string_CharCode选项开始 -->
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="string_CharCode_handle" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="请输入..."></textarea>
+              </div>
+            </div>
+            <div class="layui-btn-container" style="text-align: center;">
+              <button type="button" class="layui-btn layui-btn-radius layui-btn-normal" onclick="string_CharCode();">stringCharCode</button>
+              <button type="button" class="layui-btn layui-btn-radius  layui-btn-danger" onclick="remove_text();">清空输入</button>
+            </div>
+            <div class="layui-form-item layui-form-text">
+              <div class="layui-input-block" >
+                <textarea id="string_CharCode_result" style=" border:0;border-radius:15px;background-color:rgba(241,241,241,.98);width: 90%;height: 150px;padding: 10px;resize: none;"  placeholder="结果将在这显示..."></textarea>
+              </div>
+            </div>
+<!-- Jstring_CharCode选项结束 -->
+          </div>
+<!-- MD5加密选项开始 -->
+          <div class="layui-tab-item">
+            <label class="layui-form-label"> </label>
+            <div class="layui-input-block">
+              <input type="text" id="Salt" name="Salt"  placeholder="请输入盐值(当然也可以不输入)" autocomplete="off" class="layui-input myinput">
+              <!-- <textarea type="text" name="Salt" required  lay-verify="required"  placeholder="请输入明文" autocomplete="off" class="layui-input myinput mymd5"> -->
+              <textarea  id="mymd5" style="resize: none; height: 100px;"  autocomplete="off" class="layui-input myinput mymd5" placeholder="请输入明文..."></textarea>
+              <textarea  id="md5_result" style="resize: none; height: 100px;" required  lay-verify="required"  autocomplete="off" class="layui-input myinput mymd5" placeholder="结果将在这显示..."></textarea>
+              <div class="layui-form " style="margin-top: 20px;">
+                <div class="layui-form-item">
+                  <div class="layui-form-item " style="text-align: center;">
+                    <button type="button" class="layui-btn layui-btn-radius layui-btn-blue" onclick="md5(1);">冰蝎3加密</button>
+                    <button type="button" class="layui-btn layui-btn-radius layui-btn-normal" onclick="md5(2);">MD5加密</button>
+                    <button type="button" class="layui-btn layui-btn-radius  layui-btn-danger" onclick="remove_text();">清空输入</button>
+                  </div>
+                  <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 20px">
+                    可以选择加盐MD5加密或者不加盐值，不加盐值的话盐值输入框为空即可。加盐的方式为md5(pass + Salt).冰蝎3加密不用输入盐值.
+                    <br>——c1o2a3
+                  </blockquote>
+              </div>
+          </div>
+<!-- MD5加密选项结束 -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © C1O2A3
+  </div>
+</div>
+<script src="./src/layui.js"></script>
+<script src="./src/base64.js"></script>
+<script type="text/javascript" src="./src/crypto/crypto-js.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['form','element','layer'], function(){
+  var $ = layui.jquery;
+  element = layui.element;
+  layer = layui.layer;
+  form = layui.form;
+  
+});
+</script>
+<script>
+var B64ENC = {
+        "+": "-",
+        "/": "_",
+        "=": ""
+    },
+    B64DEC = {
+        "-": "+",
+        _: "/"
+    };
+// URL编码事件
+function urlencode() {
+  var getvalue = document.getElementById("URL_handle").value;
+  var URL_handle = encodeURIComponent(getvalue);
+  var result = document.getElementById("URL_result");
+  result.value = URL_handle; 
+}
+//URL全编码
+function urlAllEncode() {
+  var _0x2ba9e2 = document['getElementById']('URL_handle')['value'];
+  var _0x2ba9e3 = urlEncodeHelper(_0x2ba9e2);
+  // alert(urlAllEncodes);
+  document['getElementById']('URL_result')['value'] = _0x2ba9e3;
+}
+function urlEncodeHelper(e, r) {
+  return ++r ? "%" + ([10] + e.charCodeAt().toString(16)).slice(-2) : unescape(encodeURIComponent(e)).replace(/[^]/g, urlEncodeHelper)
+}
+// URL解码事件
+function urldecode() {
+  var getvalue = document.getElementById("URL_handle").value;
+  var URL_handle = decodeURIComponent(getvalue);
+  var result = document.getElementById("URL_result");
+  result.value = URL_handle; 
+}
+// 清空事件
+function remove_text() {
+  // var result = document.getElementById("result");
+  // result.value = ""; 
+  document.getElementById("URL_handle").value = "";
+  document.getElementById("URL_result").value = "";
+  document.getElementById("Unicode_handle").value = "";
+  document.getElementById("Unicode_result").value = "";
+  document.getElementById("base64_handle").value = "";
+  document.getElementById("base64_result").value = "";
+  document.getElementById("HEX_handle").value = "";
+  document.getElementById("HEX_result").value = "";
+  document.getElementById("html16_handle").value = "";
+  document.getElementById("html16_result").value = "";
+  document.getElementById("html10_handle").value = "";
+  document.getElementById("html10_result").value = "";
+  document.getElementById("js8_handle").value = "";
+  document.getElementById("js8_result").value = "";
+  document.getElementById("js16_handle").value = "";
+  document.getElementById("js16_result").value = "";
+  document.getElementById("string_CharCode_handle").value = "";
+  document.getElementById("string_CharCode_result").value = "";
+  document.getElementById("mymd5").value = "";
+  document.getElementById("md5_result").value = "";
+  document.getElementById("Salt").value = "";
+
+}
+//Unicode编码开始
+/*Obfuscated by JShaman.com*/
+function DecodeUnicode(_0x176f29) {
+    return unescape(_0x176f29['replace'](/\\u/gi, '%u'));
+}
+
+function EncodeUnicode(_0x3b8cd7) {
+    if (_0x3b8cd7 == '' || _0x3b8cd7 === null) return _0x3b8cd7;
+    let _0x304f47 = [];
+    for (var _0xde1ffe = 0x0; _0xde1ffe < _0x3b8cd7['length']; _0xde1ffe++) _0x304f47[_0xde1ffe] = ('00' + _0x3b8cd7[
+        'charCodeAt'](_0xde1ffe)['toString'](0x10))['slice'](-0x4);
+    return '\x5cu' + _0x304f47['join']('\x5cu');
+}
+
+function Ascii2Unicode(_0x2a7600) {
+    var _0xd32abf = '';
+    for (var _0x335fbc = 0x0; _0x335fbc < _0x2a7600['length']; _0x335fbc++) _0xd32abf += '&#' + _0x2a7600['charCodeAt']
+        (_0x335fbc) + ';';
+    return _0xd32abf;
+}
+
+function Unicode2Ascii(_0x1518d8) {
+    var _0x3a26bf = '';
+    var _0x4c3009 = _0x1518d8['match'](/&#(\d+);/g);
+    if (_0x4c3009 === null) return _0x1518d8;
+    for (var _0xca5e37 = 0x0; _0xca5e37 < _0x4c3009['length']; _0xca5e37++) _0x3a26bf += String['fromCharCode'](
+        _0x4c3009[_0xca5e37]['replace'](/[&#;]/g, ''));
+    return _0x3a26bf;
+}
+
+function DoEncodeUnicode() {
+    var _0x4b3528 = document['getElementById']('Unicode_handle')['value'];
+    // alert(EncodeUnicode(_0x4b3528));
+    document['getElementById']('Unicode_result')['value'] = EncodeUnicode(_0x4b3528);
+}
+
+function DoDecodeUnicode() {
+    var _0x2ba9e2 = document['getElementById']('Unicode_handle')['value'];
+    document['getElementById']('Unicode_result')['value'] = DecodeUnicode(_0x2ba9e2);
+}
+
+function DoAscii2Unicode() {
+    var _0x2ecb0c = document['getElementById']('Unicode_handle')['value'];
+    var _0x6feaaa = Ascii2Unicode(_0x2ecb0c);
+    document['getElementById']('Unicode_result')['value'] = _0x6feaaa;
+}
+
+function DoUnicode2Ascii() {
+    var _0x4cde66 = document['getElementById']('Unicode_handle')['value'];
+    var _0x5f41eb = Unicode2Ascii(_0x4cde66);
+    document['getElementById']('Unicode_result')['value'] = _0x5f41eb;
+}
+//Unicode编码结束
+//base64编码
+function base64_encade() {
+  var _0x2baas1 = document['getElementById']('base64_handle')['value'];
+  // alert(_0x2baas1);
+  var _0x2bax23 = Base64.encode(_0x2baas1);
+  // alert(Base64.encode(_0x2bax23));
+
+  // alert(_0x2bax23);
+  document['getElementById']('base64_result')['value'] = _0x2bax23;
+}
+//base64安全编码
+function URL_base64_encade() {
+  var _0x2baas1 = document['getElementById']('base64_handle')['value'];
+  let u8s   =  new Uint8Array([100,97,110,107,111,103,97,105]);
+  var _0x2baxbb = URL_safe_base64_encade(_0x2baas1);
+
+  // var _0x2baxbb = Base64.fromUint8Array(u8s,true);
+  document['getElementById']('base64_result')['value'] = _0x2baxbb;
+}
+function URL_safe_base64_encade(e) {
+  return e = Base64.encode(e).replace(/[+/=]/g, function(e) {
+      return B64ENC[e]
+  });
+}
+//base64解码
+function base64_decade() {
+  var _0x2baas1 = document['getElementById']('base64_handle')['value'];
+  e = URL_safe_base64_decade(_0x2baas1);
+  _0x2bax23 = Base64.decode(e);
+  document['getElementById']('base64_result')['value'] = _0x2bax23;
+}
+function URL_safe_base64_decade(e) {
+  return e = e.replace(/[-_]/g, function(e) {
+      return B64DEC[e]
+  });
+}
+//HEX编码
+function HEX_encade() {
+  var _0x2baas1 = document['getElementById']('HEX_handle')['value'];
+  var _0x2baas12 = CryptoJS.enc.Utf8.parse(_0x2baas1);
+  // alert(_0x2baas12);
+  document['getElementById']('HEX_result')['value'] = _0x2baas12;
+}
+//HEX解码
+function HEX_decade() {
+  var _0x2bk21 = document['getElementById']('HEX_handle')['value'];
+  var _0x25ev1 = hexDecode(_0x2bk21);
+  document['getElementById']('HEX_result')['value'] = _0x25ev1;
+}
+function hexDecode(e) {
+    var r = e;
+    (r.startsWith("0x") || r.startsWith("0X")) && (r = r.substr(2));
+    var t = CryptoJS.enc.Hex.parse(r);
+    try {
+        return CryptoJS.enc.Utf8.stringify(t)
+    } catch (n) {
+        return CryptoJS.enc.latin1.stringify(t)
+    }
+}
+//HTML16编码
+function html16_encade(argument) {
+  var _0x1sxkf1 = document['getElementById']('html16_handle')['value'];
+  var _0x12ejfas = html16Encode(_0x1sxkf1);
+  document['getElementById']('html16_result')['value'] = _0x12ejfas;
+}
+function html16Encode(e) {
+    return e.split("").map(function(e) {
+        return "&#x" + e.charCodeAt().toString(16).padStart(2, "0") + ";"
+    }).join("")
+}
+//html16解码
+function html16_decade(argument) {
+  var _0x1123f1 = document['getElementById']('html16_handle')['value'];
+  var _0xajjfas = html16Decode(_0x1123f1);
+  document['getElementById']('html16_result')['value'] = _0xajjfas;
+}
+function html16Decode(e) {
+    return e.replace(/&#x([a-f0-9]+);?/gi, function(e, r) {
+        return String.fromCharCode(parseInt(r, 16))
+    })
+}
+
+//html10编码
+function html10_encade() {
+  var _0x1zx3f1 = document['getElementById']('html10_handle')['value'];
+  var _0xsajfas = html10Encode(_0x1zx3f1);
+  document['getElementById']('html10_result')['value'] = _0xsajfas;
+}
+function html10Encode(e) {
+  return e.split("")
+    .map(function(e) {
+      return "&#" + e.charCodeAt()
+        .toString()
+        .padStart(2, "0") + ";"
+    })
+    .join("")
+}
+// html10解码
+function html10_decade() {
+  var _0x1br3f1 = document['getElementById']('html10_handle')['value'];
+  var _0xs12fas = html10Decode(_0x1br3f1);
+  document['getElementById']('html10_result')['value'] = _0xs12fas;
+}
+function html10Decode(e) {
+  return e.replace(/&#(\d+);?/g, function(e, r) {
+    return String.fromCharCode(parseInt(r))
+  })
+}
+
+//JS8编码
+function js8_encade() {
+  var _0xsbcvr1 = document['getElementById']('js8_handle')['value'];
+  var _0x12ihas = js8Encode(_0xsbcvr1);
+  document['getElementById']('js8_result')['value'] = _0x12ihas;
+}
+function js8Encode(e) {
+  return e.split("")
+    .map(function(e) {
+      return "\\" + e.charCodeAt()
+        .toString(8)
+        .padStart(2, "0")
+    })
+    .join("")
+}
+//JS8解码
+function js8_decade() {
+  var _0xss4gb = document['getElementById']('js8_handle')['value'];
+  var _0xvcqwas = js8Decode(_0xss4gb);
+  document['getElementById']('js8_result')['value'] = _0xvcqwas;
+}
+function js8Decode(e) {
+  return e.replace(/\\([0-7]+)/g, function(e, r) {
+    return String.fromCharCode(parseInt(r, 8))
+  })
+}
+// JS16编码
+function js16_encade() {
+  var _0xotcw1 = document['getElementById']('js16_handle')['value'];
+  var _0x11has = js16Encode(_0xotcw1);
+  document['getElementById']('js16_result')['value'] = _0x11has;
+}
+function js16Encode(e) {
+  return e.split("")
+    .map(function(e) {
+      return "\\x" + e.charCodeAt()
+        .toString(16)
+        .padStart(2, "0")
+    })
+    .join("")
+}
+
+// JS16解码
+function js16_decade() {
+  var _0xsbngb = document['getElementById']('js16_handle')['value'];
+  var _0xasdqwas = js16Decode(_0xsbngb);
+  document['getElementById']('js16_result')['value'] = _0xasdqwas;
+}
+function js16Decode(e) {
+  return e.replace(/\\x([a-f0-9]{1,4})/gi, function(e, r) {
+    return String.fromCharCode(parseInt(r, 16))
+  })
+}
+
+//stringCharCode
+function string_CharCode() {
+  var e = document['getElementById']('string_CharCode_handle')['value'];
+  var e = stringCharCode(e);
+  document['getElementById']('string_CharCode_result')['value'] = e;
+}
+function stringCharCode(e) {
+  return "String.fromCharCode(".concat(e.split("")
+    .map(function(e) {
+      return e.charCodeAt()
+    })
+    .join(","), ")")
+}
+// MD5加密
+function md5(leibie) {
+  var leibie = leibie;
+  var e = document['getElementById']('mymd5')['value'];
+  var Salt = document['getElementById']('Salt')['value'];
+  if (leibie == 2 ) {
+    if (Salt=="") {
+        var hash = CryptoJS.MD5(e);
+      }else{
+        var hash = CryptoJS.MD5(e + Salt);
+      }
+  }else if(leibie == 1){
+    var bingxie = CryptoJS.MD5(e);
+    // console.log(typeof bingxie)
+    var hash = String(bingxie).slice(0,16);
+  }
+
+  document['getElementById']('md5_result')['value'] = hash;
+}
+
+</script>
+</body>
+</html>
+      

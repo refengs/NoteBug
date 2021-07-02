@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>渗透平台 - C1O2A3</title>
+  <link rel="stylesheet" href="./src/css/layui.css">
+<style type="text/css">
+.layui-layout-admin .layui-body {
+    position: fixed;
+    top: 60px;
+    bottom: 44px;
+}
+.variable{
+  color: #cb7832;
+  font-size: 15px; 
+}
+.layui-code-ol>li{
+  font-size: 13px; 
+}
+.myselect {
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.myinput{
+  width: 81.5%;
+  outline-style: none;
+  border-bottom-color:  #ccc;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  padding: 30px;
+  margin-top: 15px;
+  padding-top: 16px;
+  overflow: hidden;
+  font-size: 15px;
+}
+.mymd5{
+  margin-top: 15px;
+  /*padding-top: 66px;*/
+}
+.myinput:hover {
+    border-bottom-color:  #c51152;
+    -webkit-box-shadow: 0 3px 0 0 #c51152;
+    box-shadow: 0 3px 0 0 #c51152;
+}
+.myinput:focus {
+    border-bottom-color:  #33ccff;
+    -webkit-box-shadow: 0 3px 0 0 #33ccff;
+    box-shadow: 0 3px 0 0 #33ccff;
+}
+.layui-btn-container>button{
+  margin-left: 5px;
+}
+</style>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header layui-bg-blue">
+    <div class="layui-logo">渗透平台</div>
+
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+ <!--      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li> -->
+<!--       <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li> -->
+    </ul>
+    <ul class="layui-nav layui-layout-right layui-bg-blue">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="./src/img/test.jpg" class="layui-nav-img">
+          c1o2a3
+        </a>
+        <!-- <dl class="layui-nav-child"> -->
+<!--           <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd> -->
+        <!-- </dl> -->
+      </li>
+      <!-- <li class="layui-nav-item"><a href="">退了</a></li> -->
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-blue">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree layui-bg-blue"  lay-filter="test">
+        <li class="layui-nav-item">
+          <a class="" href="javascript:;">前端工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./decode.html">编码解码</a></dd>
+            <dd><a href="./qrcode.html">二维码生成</a></dd>
+            <!-- <dd><a href="javascript:;">代码美化</a></dd> -->
+            <dd><a href="./passwd.html">随机密码生成器</a></dd>
+            <dd><a href="./idcard.html">身份证号码生成</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">安全工具</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./googlehacking.html">google hacking</a></dd>
+            <dd  class="layui-this"><a href="./search.html">综合搜索</a></dd>
+            <dd><a href="./getAV.html">Windows杀软识别</a></dd>
+            <dd><a href="./tiquan.html">Windows提权辅助</a></dd>
+            <dd><a href="./shell.html">反弹shell编码</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">常用资料</a>
+          <dl class="layui-nav-child">
+            <dd><a href="./linux.html">Linux常用命令</a></dd>
+            <dd><a href="./windows.html">windows常用命令</a></dd>
+            <dd><a href="./powershell.html">powershell常用命令</a></dd>
+            <dd><a href="./down.html">传输方法常用命令</a></dd>
+<!--             <dd><a href="">超链接</a></dd> -->
+          </dl>
+        </li>
+<!--         <li class="layui-nav-item"><a href="">云市场</a></li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li> -->
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body ">
+    <!-- 内容主体区域 -->
+    <div class="layui-collapse" lay-accordion="" style="padding: 15px; ">
+      <center>  <h1>综合搜索</h1></center>
+      <hr class="layui-border-red">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+          <legend>IOT搜索</legend>
+        </fieldset>
+        <textarea  id="iot_text" style="resize: none; height: 50px;"  autocomplete="off" class="layui-input myinput" placeholder="输入要查询的IP..."></textarea>
+        <div class="layui-btn-container" style="margin: 20px 0 20px 40px">
+          <button type="button" class="layui-btn layui-btn-warm LAY-component-form-getval" onclick="iot_search(0)">fofa</button>
+          <button type="button" class="layui-btn layui-btn-warm" onclick="iot_search(1)">shodan</button>
+          <button type="button" class="layui-btn layui-btn-warm" onclick="iot_search(2)">雷神Sumap</button>
+          <button type="button" class="layui-btn layui-btn-warm" onclick="iot_search(3)">360 QuaKe</button>
+          <button type="button" class="layui-btn layui-btn-warm" onclick="iot_search(4)">钟馗之眼</button>
+          <!-- <button type="button" class="layui-btn layui-btn-normal" onclick="iot_search(5)">傻蛋</button> -->
+          <button type="button" class="layui-btn layui-btn-primary" onclick="iot_text()">清除输入</button>
+        </div>
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+          <legend>综合搜索</legend>
+        </fieldset>
+        <textarea  id="text" style="resize: none; height: 50px;"  autocomplete="off" class="layui-input myinput" placeholder="输入要查询的信息..."></textarea>
+        <div class="layui-form-item layui-form" style="margin-top: 15px;padding: 10px;">
+          <!-- <label class="layui-form-label">搜索引擎</label> -->
+          <div class="layui-input-block" style="margin-left: 40px;">
+            <input type="checkbox" name="google" title="谷歌" lay-filter="search">
+            <input type="checkbox" name="baidu" title="百度" checked="" lay-filter="search">
+            <input type="checkbox" name="bing" title="必应" lay-filter="search">
+            <input type="checkbox" name="sougou" title="搜狗" lay-filter="search">
+            <input type="checkbox" name="haosou" title="360搜索" lay-filter="search">
+          </div>
+        </div>
+        <div class="layui-btn-container" style="margin: 20px 0 20px 40px">
+          <button type="button" class="layui-btn layui-btn-normal LAY-component-form-getval" onclick="search(0)">搜索标题</button>
+          <button type="button" class="layui-btn layui-btn-normal" onclick="search(1)">搜索关键字URL</button>
+          <button type="button" class="layui-btn layui-btn-normal" onclick="search(2)">搜索正文</button>
+          <button type="button" class="layui-btn layui-btn-normal" onclick="search(3)">搜索域名</button>
+          <button type="button" class="layui-btn layui-btn-primary" onclick="remove_text()">清除输入</button>
+        </div>
+        <blockquote class="layui-elem-quote layui-quote-nm">
+          部分搜索引擎语法不全，可能搜索结果不严谨。。。
+          <br>如果勾选多个搜索引擎，部分浏览器可能会拒绝打开多个新窗口。
+          <br>如谷歌：可以在"设置-网站设置-弹出式窗口和重定向-允许"中打开允许。
+        </blockquote>
+    </div>
+  </div>
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © C1O2A3
+  </div>
+</div>
+<script src="./src/layui.js"></script>
+<script>
+google = false;
+baidu = true;
+bing = false;
+sougou = false;
+haosou = false;
+//JavaScript代码区域
+layui.use(['form','element','layer','code'], function(){
+  $ = layui.jquery;
+  element = layui.element;
+  layer = layui.layer;
+  form = layui.form;
+  layui.code();  
+  //表单取值
+  layui.form.on('checkbox(search)', function (data) {
+    // console.log(data.elem.checked);
+    // console.log(data.elem.name);
+    var check_switch = data.elem.checked;
+    var name = data.elem.name;
+    if (name=="") {
+      layer.msg('请输入内容');
+      exit();
+    }
+    if (check_switch ==true) {
+      layer.msg(name+":开启");
+    }else{
+      layer.msg(name+":关闭");
+    }
+    switch(name){
+      case "google":
+        if (check_switch ==true) {
+          google = true;
+        }else{
+          google = false;
+        }
+        // console.log(google);
+        break;
+      case "baidu":
+        if (check_switch ==true) {
+          baidu = true;
+        }else{
+          baidu = false;
+        }
+        // console.log(baidu);
+        break;
+      case "bing":
+        if (check_switch ==true) {
+          bing = true;
+        }else{
+          bing = false;
+        }
+        // console.log(bing);
+        break;
+      case "sougou":
+        if (check_switch ==true) {
+          sougou = true;
+        }else{
+          sougou = false;
+        }
+        // console.log(sougou);
+        break;
+      case "haosou":
+        if (check_switch ==true) {
+          haosou = true;
+        }else{
+          haosou = false;
+        }
+        // console.log(haosou);
+        break;
+    }
+  });
+});
+
+
+function search(target) {
+  var _0xss4gb = document['getElementById']('text')['value'];
+  if (_0xss4gb=="") {
+    layer.msg('请输入内容');
+    exit();
+  }
+  switch (target) {
+    case 0:
+      if (google == true) {
+        console.log("google:"+google);
+        window.open('https://www.google.com/search?q=intitle:"'+_0xss4gb+'"','google');
+      }
+      if (baidu == true) {
+        console.log("baidu:"+baidu);
+        setTimeout(window.open('https://www.baidu.com/s?wd=intitle:'+_0xss4gb,'baidu'),3000);
+      }
+      if (bing == true) {
+        console.log("bing:"+bing);
+        setTimeout(window.open('https://cn.bing.com/search?q=intitle:'+_0xss4gb,'bing'),3000);
+      }
+      if (sougou == true) {
+        console.log("sougou:"+sougou);
+        setTimeout(window.open('https://www.sogou.com/web?query=intitle:'+_0xss4gb,'sougou'),3000);
+      }
+      if (haosou == true) {
+        console.log("haosou:"+haosou);
+        setTimeout(window.open('https://www.so.com/s?ie=utf-8&q=intitle:'+_0xss4gb,'haosou'),3000);
+      }
+      break;
+    case 1:
+      if (google == true) {
+        console.log("google:"+google);
+        window.open('https://www.google.com/search?q=inurl:"'+_0xss4gb+'"','google');
+      }
+      if (baidu == true) {
+        console.log("baidu:"+baidu);
+        setTimeout(window.open('https://www.baidu.com/s?wd=inurl:'+_0xss4gb,'baidu'),3000);
+      }
+      if (bing == true) {
+        console.log("bing:"+bing);
+        setTimeout(window.open('https://cn.bing.com/search?q=url:'+_0xss4gb,'bing'),3000);
+      }
+      if (sougou == true) {
+        console.log("sougou:"+sougou);
+        setTimeout(window.open('https://www.sogou.com/web?query=inurl:'+_0xss4gb,'sougou'),3000);
+      }
+      if (haosou == true) {
+        console.log("haosou:"+haosou);
+        setTimeout(window.open('https://www.so.com/s?ie=utf-8&q=inurl:'+_0xss4gb,'haosou'),3000);
+      }
+      break;
+    case 2:
+      if (google == true) {
+        console.log("google:"+google);
+        window.open('https://www.google.com/search?q=intext:"'+_0xss4gb+'"','google');
+      }
+      if (baidu == true) {
+        console.log("baidu:"+baidu);
+        setTimeout(window.open('https://www.baidu.com/s?wd=body:'+_0xss4gb,'baidu'),3000);
+      }
+      if (bing == true) {
+        console.log("bing:"+bing);
+        setTimeout(window.open('https://cn.bing.com/search?q=inbody:'+_0xss4gb,'bing'),3000);
+      }
+      if (sougou == true) {
+        console.log("sougou:"+sougou);
+        setTimeout(window.open('https://www.sogou.com/web?query=intext:'+_0xss4gb,'sougou'),3000);
+      }
+      if (haosou == true) {
+        console.log("haosou:"+haosou);
+        setTimeout(window.open('https://www.so.com/s?ie=utf-8&q=intext:'+_0xss4gb,'haosou'),3000);
+      }
+      break;
+    case 3:
+      if (google == true) {
+        console.log("google:"+google);
+        window.open('https://www.google.com/search?q=site:"'+_0xss4gb+'"','google');
+      }
+      if (baidu == true) {
+        console.log("baidu:"+baidu);
+        setTimeout(window.open('https://www.baidu.com/s?wd=site:'+_0xss4gb,'baidu'),3000);
+      }
+      if (bing == true) {
+        console.log("bing:"+bing);
+        setTimeout(window.open('https://cn.bing.com/search?q=site:'+_0xss4gb,'bing'),3000);
+      }
+      if (sougou == true) {
+        console.log("sougou:"+sougou);
+        setTimeout(window.open('https://www.sogou.com/web?query=site:'+_0xss4gb,'sougou'),3000);
+      }
+      if (haosou == true) {
+        console.log("haosou:"+haosou);
+        setTimeout(window.open('https://www.so.com/s?ie=utf-8&q=site:'+_0xss4gb,'haosou'),3000);
+      }
+      break;
+    } 
+}
+// 清空事件
+function remove_text() {
+  // var result = document.getElementById("result");
+  // result.value = ""; 
+  document.getElementById("text").value = "";
+
+}
+function iot_text() {
+  // var result = document.getElementById("result");
+  // result.value = ""; 
+  document.getElementById("iot_text").value = "";
+
+}
+function iot_search(target) {
+  var _0xss4gb = document['getElementById']('iot_text')['value'];
+  var base_0xss4gb = btoa(_0xss4gb);
+  if (base_0xss4gb=="") {
+    layer.msg('请输入内容');
+    exit();
+  }
+  switch (target) {
+    case 0:
+      window.open('https://fofa.so/result?qbase64='+base_0xss4gb); 
+      break;
+    case 1:
+      window.open('https://www.shodan.io/search?query='+_0xss4gb); 
+      break;
+    case 2:
+      window.open('https://sumap.dbappsecurity.com.cn/gather.html?q='+_0xss4gb); 
+      break;
+    case 3:
+      window.open('https://quake.360.cn/quake/#/searchResult?searchVal='+_0xss4gb+"&selectIndex=quake_service"); 
+      break;
+    case 4:
+      window.open('https://www.zoomeye.org/searchResult?q='+_0xss4gb); 
+      break;
+    }
+  }
+</script>
+</body>
+</html>
+      
