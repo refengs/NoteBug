@@ -2,6 +2,8 @@
 
 ## 前言
 
+想着想弄一个纯JS+HTML写的，然后可以到处带走的小工具，于是这个项目就来了。
+
 **整体框架：layui**
 网站的整体思路参考了：[zjun的在线工具](https://tools.zjun.info/googlehacking/)
 
